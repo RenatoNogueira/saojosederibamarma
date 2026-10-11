@@ -12,10 +12,18 @@ const TOTAL_KEY = 'ribamar:visits';
 const WINDOW_MS = 70 * 1000;          /* quem não "bateu ponto" nos últimos 70 s sai da contagem */
 const SID_RE = /^[a-z0-9]{8,40}$/;
 
+/* Aceita os nomes padrão e também variantes com prefixo (ex.: STORAGE_KV_REST_API_URL), que a Vercel
+   cria quando se escolhe um prefixo personalizado ao conectar o banco. */
 function redisConfig(env = process.env) {
-  const url = env.KV_REST_API_URL || env.UPSTASH_REDIS_REST_URL;
-  const token = env.KV_REST_API_TOKEN || env.UPSTASH_REDIS_REST_TOKEN;
-  return url && token ? { url: url.replace(/\/+$/, ''), token } : null;
+  const urlRe = /(^|_)(KV_REST_API_URL|UPSTASH_REDIS_REST_URL)$/;
+  const tokenRe = /(^|_)(KV_REST_API_TOKEN|UPSTASH_REDIS_REST_TOKEN)$/;
+  const keys = Object.keys(env);
+  for (const uk of keys.filter(k => urlRe.test(k) && env[k])) {
+    const prefix = uk.replace(urlRe, '$1');
+    const tk = keys.find(k => tokenRe.test(k) && env[k] && k.replace(tokenRe, '$1') === prefix && !/READ_ONLY/.test(k));
+    if (tk) return { url: String(env[uk]).replace(/\/+$/, ''), token: env[tk] };
+  }
+  return null;
 }
 
 async function readBody(req) {

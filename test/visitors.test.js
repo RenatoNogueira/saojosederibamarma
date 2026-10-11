@@ -18,6 +18,8 @@ const post = body => ({ method: 'POST', body });
 test('redisConfig aceita os dois nomes de variável e rejeita ausência', () => {
   assert.deepEqual(redisConfig({ KV_REST_API_URL: 'https://a/', KV_REST_API_TOKEN: 't' }), { url: 'https://a', token: 't' });
   assert.deepEqual(redisConfig({ UPSTASH_REDIS_REST_URL: 'https://b', UPSTASH_REDIS_REST_TOKEN: 'u' }), { url: 'https://b', token: 'u' });
+  assert.deepEqual(redisConfig({ STORAGE_KV_REST_API_URL: 'https://c/', STORAGE_KV_REST_API_TOKEN: 'v', STORAGE_KV_REST_API_READ_ONLY_TOKEN: 'ro' }), { url: 'https://c', token: 'v' }, 'prefixo personalizado');
+  assert.equal(redisConfig({ KV_REST_API_URL: 'https://d', KV_REST_API_READ_ONLY_TOKEN: 'ro' }), null, 'token somente leitura não serve');
   assert.equal(redisConfig({}), null);
 });
 
