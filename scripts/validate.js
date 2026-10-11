@@ -210,7 +210,7 @@ function validateHtml(ctx) {
 
 /* ---------- 4. código ---------- */
 function validateCode() {
-  const jsFiles = ['server.js', 'build.js', ...fs.readdirSync(path.join(ROOT, 'lib')).map(f => 'lib/' + f), ...fs.readdirSync(path.join(ROOT, 'data')).map(f => 'data/' + f),
+  const jsFiles = ['server.js', 'build.js', ...(fs.existsSync(path.join(ROOT, 'api')) ? fs.readdirSync(path.join(ROOT, 'api')).map(f => 'api/' + f) : []), ...fs.readdirSync(path.join(ROOT, 'lib')).map(f => 'lib/' + f), ...fs.readdirSync(path.join(ROOT, 'data')).map(f => 'data/' + f),
     ...fs.readdirSync(path.join(PUB, 'js')).map(f => 'public/js/' + f), ...fs.readdirSync(__dirname).filter(f => f.endsWith('.js')).map(f => 'scripts/' + f)];
   jsFiles.forEach(f => {
     try { execFileSync(process.execPath, ['--check', path.join(ROOT, f)], { stdio: 'pipe' }); }

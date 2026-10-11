@@ -27,6 +27,13 @@ Fluxo para uma foto nova: copie o JPG/PNG para `assets-src/photos/` → `npm run
 
 O build na Vercel instala só as dependências de produção (`npm ci --omit=dev`): a conversão de imagens é feita localmente.
 
+## Contador de visitantes
+Texto discreto no fim do rodapé: `12.480 visitas · 3 agora` (o "agora" só aparece com 2 ou mais pessoas).
+- **Front:** `public/js/visitors.js` — sem cookies, id aleatório de sessão, respeita *Do Not Track*, some se a API falhar.
+- **API:** `api/visitors.js` (função da Vercel) — guarda no Redis só um id aleatório que expira em ~70 s e o total.
+- **Ativar na Vercel:** Projeto → **Storage → Create Database → Upstash (Redis)** → conecte ao projeto (isso cria
+  `KV_REST_API_URL` e `KV_REST_API_TOKEN`) → **Redeploy**. Sem isso a API responde 503 e o contador fica oculto.
+
 ## Estrutura
 | Pasta | Conteúdo |
 |---|---|
