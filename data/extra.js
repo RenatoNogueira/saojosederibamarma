@@ -5,7 +5,7 @@
 
 /* ---------- pratos e sabores ---------- */
 const dishes = [
-  { id: 'peixe-pedra', icon: 'fish', ac: '#ffc861', name: 'Peixe à pedra', kicker: 'Prato da casa · Ribamar',
+  { id: 'peixe-pedra', icon: 'fish', ac: '#ffc861', name: 'Peixe pedra', kicker: 'Prato da casa · Ribamar',
     short: 'O prato mais associado à cidade: crocante por fora, macio por dentro.',
     body: ['É o prato mais lembrado quando se fala em comer em São José de Ribamar. Aparece nos bares da Praia de Panaquatira, na orla do Araçagi e no centro.',
            'Um relato de 2011, feito num restaurante simples sobre o cais, descreve o peixe crocante por fora e macio e suculento por dentro, servido com limão, vinagrete e cerveja bem gelada.'],
@@ -37,7 +37,7 @@ const dishes = [
   { id: 'peixada', icon: 'fish', ac: '#5fd0ff', name: 'Peixada e caldeirada', kicker: 'Comida de panela',
     short: 'Cozidos de peixe, com pescada e caldo encorpado.',
     body: ['A peixada está no cardápio do Bar e Restaurante do Bena, na Praia de Panaquatira, e a Casa da Peixada é lembrada perto da igreja matriz.',
-           'No Sabor do Nordeste, a caldeirada de pescada é um dos destaques, junto com o peixe na pedra e a galinhada de galinha caipira.'],
+           'No Sabor do Nordeste, a caldeirada de pescada é um dos destaques, junto com o peixe pedra e a galinhada de galinha caipira.'],
     facts: [['Onde', 'Panaquatira, centro e Outeiro'], ['Peixe', 'Pescada, entre outros']], tip: '', src: 'O Imparcial · Wanderlog' },
   { id: 'galinha-caipira', icon: 'drum', ac: '#ffb347', name: 'Galinha caipira e mocotó', kicker: 'Mesa de terra',
     short: 'Quando o dia pede panela de terra em vez de mar.',
@@ -73,9 +73,9 @@ const eats = [
   { id: 'atlantico', name: 'Atlântico Restaurante Bar', area: 'aracagi', where: 'Av. Atlântica, Araçagy', food: 'Peixe à milanesa, caranguejo e camarão com arroz de toucinho', rating: '4,5', n: 150, price: '' },
   { id: 'recanto-cabral', name: 'Recanto do Cabral', area: 'aracagi', where: 'Av. São Paulo, Araçagi', food: 'Carne de sol, galinha caipira e pratos maranhenses', rating: '4,5', n: 543, price: 'acessível' },
   { id: 'praias-grill', name: 'Praia’s Grill', area: 'aracagi', where: 'Rod. MA-203, Araçagy', food: 'Frango assado e mocotó', rating: '4,5', n: 55, price: '' },
-  { id: 'mar-e-sol', name: 'Restaurante Mar e Sol', area: 'centro', where: 'Av. Gonçalves Dias, Centro', food: 'Peixe à pedra, com vista para o mar', rating: '4,2', n: 773, price: '' },
+  { id: 'mar-e-sol', name: 'Restaurante Mar e Sol', area: 'centro', where: 'Av. Gonçalves Dias, Centro', food: 'Peixe pedra, com vista para o mar', rating: '4,2', n: 773, price: '' },
   { id: 'bella-vista', name: 'Pizzaria Bella Vista', area: 'centro', where: 'Av. Gonçalves Dias, Centro', food: 'Pizzas, com pizza de camarão', rating: '4,4', n: 495, price: 'acessível' },
-  { id: 'sabor-nordeste', name: 'Sabor do Nordeste', area: 'outros', where: 'Outeiro / Moropóia', food: 'Peixes, peixe na pedra, caldeirada de pescada e galinhada caipira', rating: '4,2', n: 184, price: '' }
+  { id: 'sabor-nordeste', name: 'Sabor do Nordeste', area: 'outros', where: 'Outeiro / Moropóia', food: 'Peixes, peixe pedra, caldeirada de pescada e galinhada caipira', rating: '4,2', n: 184, price: '' }
 ];
 
 /* ---------- onde ficar ---------- */
