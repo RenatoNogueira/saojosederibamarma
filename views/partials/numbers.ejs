@@ -1,0 +1,38 @@
+<section class="sec dark" id="numeros">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>01</span> Panorama</p>
+      <h2>Uma cidade que cresce <em>sem esquecer de onde veio</em></h2>
+      <p class="lead">Segundo o Censo 2022 do IBGE, São José de Ribamar é um dos municípios que mais cresceram no país. Os números abaixo contam esse movimento.</p>
+    </header>
+
+    <div class="metrics">
+      <% numbers.forEach(function(n, i){ %>
+      <article class="metric reveal" style="--d:<%= i %>">
+        <%- icon(n.icon) %>
+        <div class="num"><%= n.prefix || '' %><span data-count="<%= n.value %>" data-fmt="<%= n.fmt %>"><%= n.fmt === 'dec' ? n.value : fmt(n.value) %></span><%= n.suffix || '' %></div>
+        <h3><%= n.label %></h3>
+        <p><%= n.note %></p>
+      </article>
+      <% }) %>
+    </div>
+
+    <div class="sabia reveal" id="sabia">
+      <div class="sabia-tag">Você sabia?</div>
+      <div class="sabia-body">
+        <h3 id="sabiaTitle"></h3>
+        <p id="sabiaText"></p>
+      </div>
+      <div class="car-ctl sabia-ctl" role="group" aria-label="Navegar nas curiosidades">
+        <button class="car-btn" id="sabiaPrev" aria-label="Anterior"><%- icon('arrow', 'flip') %></button>
+        <button type="button" class="car-ring" id="sabiaRing" aria-pressed="false" aria-label="Pausar a troca automática das curiosidades">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle class="bg" cx="22" cy="22" r="19"/><circle class="fg" cx="22" cy="22" r="19"/></svg>
+          <span id="sabiaCount">1 / <%= sabia.length %></span>
+        </button>
+        <button class="car-btn" id="sabiaNext" aria-label="Próximo"><%- icon('arrow') %></button>
+      </div>
+      <div class="car-dots" id="sabiaDots" aria-hidden="true"></div>
+    </div>
+    <script type="application/json" id="sabia-data"><%- JSON.stringify(sabia) %></script>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+<section class="sec dark alt" id="roteiro">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>10</span> Monte seu roteiro</p>
+      <h2>Um dia <em>em Ribamar</em></h2>
+      <p class="lead">Escolha o que você quer viver e montamos uma sequência para manhã, tarde e noite. Você também pode salvar lugares com o coração, na seção anterior.</p>
+    </header>
+
+    <div class="planner reveal">
+      <div class="pl-panel pl-controls">
+        <div class="pl-head"><span class="pl-step">1</span><h3>O que você procura?</h3></div>
+        <div class="pl-chips" id="interestChips" role="group" aria-label="Interesses">
+          <% [['fé','church','Fé'],['praia','wave','Praia'],['história','clock','História'],['gastronomia','fish','Gastronomia'],['natureza','sun','Natureza'],['mar','boat','Mar e pesca'],['fotografia','pin','Fotografia']].forEach(function(c){ %>
+          <button type="button" class="ichip" data-i="<%= c[0] %>" aria-pressed="false"><%- icon(c[1]) %><span><%= c[2] %></span></button>
+          <% }) %>
+        </div>
+        <p class="pl-meter" id="interestCount">Nenhum selecionado</p>
+        <div class="pl-actions">
+          <button class="btn p" id="planGen"><%- icon('star') %> Gerar roteiro</button>
+          <button class="btn" id="planClear">Limpar</button>
+        </div>
+        <p class="hint" id="planHint">Selecione ao menos um interesse ou salve lugares com o coração.</p>
+      </div>
+
+      <div class="pl-panel pl-out" aria-live="polite">
+        <div class="pl-head"><span class="pl-step">2</span><h3>Seu dia</h3><span class="pl-count" id="planCount">0 lugares</span></div>
+        <div class="pl-day" id="planDay" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pl-slots" id="planSlots"></div>
+        <div class="pl-foot">
+          <button class="btn" id="planShare"><%- icon('share') %> Compartilhar</button>
+          <button class="btn" id="planCopy">Copiar roteiro</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

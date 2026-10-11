@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>São José de Ribamar — Fé, mar e história</title>
+  <meta name="description" content="Explore São José de Ribamar, no Maranhão: história, festejo do padroeiro, praias, cultura e um roteiro para conhecer a cidade.">
+  <meta name="theme-color" content="#06143a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2306143a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ffc861'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="São José de Ribamar — Fé, mar e história">
+  <meta property="og:description" content="História, festejo do padroeiro, sabores, praias, calendário e galeria de fotos de São José de Ribamar, no Maranhão.">
+  <link rel="canonical" href="<%= siteUrl %>/">
+  <meta property="og:url" content="<%= siteUrl %>/">
+  <meta property="og:site_name" content="São José de Ribamar">
+  <meta property="og:image" content="<%= siteUrl %>/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Monumento a São José e igreja-santuário sobre céu do amanhecer, com o título Ribamar">
+  <meta name="twitter:image" content="<%= siteUrl %>/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!document.documentElement.dataset.app)document.documentElement.classList.add('reveal-all')},4000)</script>
+  <noscript><style>.hero *{opacity:1!important;transform:none!important;visibility:visible!important}.curtain{display:none}.wave{transform:none!important}</style></noscript>
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/lanterns.css">
+  <link rel="stylesheet" href="css/ui.css">
+  <link rel="stylesheet" href="css/polish.css">
+  <link rel="stylesheet" href="css/map.css">
+  <link rel="stylesheet" href="css/extra.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="stylesheet" href="css/a11y.css">
+</head>
+<body id="top">
+  <a class="skip" href="#numeros">Pular para o conteúdo</a>
+  <%- include('partials/nav') %>
+  <main>
+    <%- include('partials/hero') %>
+    <%- include('partials/numbers') %>
+    <%- include('partials/history') %>
+    <%- include('partials/places') %>
+    <%- include('partials/map') %>
+    <%- include('partials/sabores') %>
+    <%- include('partials/festejo') %>
+    <%- include('partials/calendario') %>
+    <%- include('partials/culture') %>
+    <%- include('partials/gallery') %>
+    <%- include('partials/planner') %>
+    <%- include('partials/quiz') %>
+    <%- include('partials/lanterns') %>
+  </main>
+  <%- include('partials/footer') %>
+  <%- include('partials/modal') %>
+  <%- include('partials/lightbox') %>
+
+  <script type="application/json" id="site-data"><%- JSON.stringify(clientData).replace(/</g, '\\u003c') %></script>
+  <script src="js/hero.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/extra.js"></script>
+</body>
+</html>

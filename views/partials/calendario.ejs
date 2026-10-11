@@ -1,0 +1,38 @@
+<section class="sec dark cal-sec" id="calendario">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>07</span> Calendário</p>
+      <h2>O ano <em>em Ribamar</em></h2>
+      <p class="lead">Do banho de cheiro de fevereiro ao festejo de setembro, a cidade tem festa o ano todo. Escolha um mês ou veja tudo; as datas citadas são das últimas edições e mudam a cada ano.</p>
+    </header>
+
+    <div class="months reveal" id="monthStrip" role="group" aria-label="Filtrar por mês">
+      <button class="mon on" data-m="0" aria-pressed="true"><b>Ano</b><small><%= events.length %> eventos</small></button>
+      <% months.forEach(function(m, i){ var n = events.filter(function(e){ return e.month === i + 1; }).length; %>
+      <button class="mon<%= n ? '' : ' empty' %>" data-m="<%= i + 1 %>" aria-pressed="false" <%= n ? '' : 'disabled' %>>
+        <b><%= m %></b><small><%= n ? n + (n === 1 ? ' evento' : ' eventos') : '—' %></small>
+        <% if (i + 1 >= seasons.dry.from && i + 1 <= seasons.dry.to) { %><i class="dry" title="<%= seasons.dry.label %>"></i><% } %>
+      </button>
+      <% }) %>
+    </div>
+    <p class="season reveal"><span class="dry-dot"></span> <%= seasons.dry.label %> · <%= seasons.tide %></p>
+
+    <ol class="ev-list" id="evList">
+      <% events.forEach(function(e, i){ %>
+      <li class="ev reveal" data-month="<%= e.month %>" style="--ac:<%= e.ac %>;--d:<%= i %>">
+        <button class="ev-btn" data-open="event:<%= e.id %>">
+          <span class="ev-date"><b><%= e.year %></b><small><%= months[e.month - 1] %></small></span>
+          <span class="ev-dot"><%- icon(e.icon) %></span>
+          <span class="ev-body">
+            <small><%= e.kicker %></small>
+            <strong><%= e.name %></strong>
+            <span><%= e.short %></span>
+          </span>
+          <span class="ev-go"><%- icon('arrow') %></span>
+        </button>
+      </li>
+      <% }) %>
+    </ol>
+    <p class="fine reveal">Datas de 2025 e 2026 conforme reportagens locais. Programações completas: Prefeitura de São José de Ribamar e Santuário.</p>
+  </div>
+</section>

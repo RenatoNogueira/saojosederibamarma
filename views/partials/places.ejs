@@ -1,0 +1,38 @@
+<section class="sec dark alt" id="lugares">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>03</span> Lugares</p>
+      <h2>Para ver, ouvir <em>e provar</em></h2>
+      <p class="lead">Do santuário às praias de mar calmo, estes são os pontos que os guias e a imprensa mais citam. Salve os que quiser no seu roteiro.</p>
+    </header>
+
+    <div class="toolbar reveal">
+      <div class="fchips" id="placesChips" role="group" aria-label="Filtrar lugares" data-filter-group="places">
+        <button class="fchip on" data-f="all" aria-pressed="true"><%- icon('star') %><span>Todos</span><em><%= places.length %></em></button>
+        <button class="fchip" data-f="fe" aria-pressed="false"><%- icon('church') %><span>Fé</span><em><%= places.filter(function(x){ return x.cat === 'fe'; }).length %></em></button>
+        <button class="fchip" data-f="praia" aria-pressed="false"><%- icon('wave') %><span>Praias</span><em><%= places.filter(function(x){ return x.cat === 'praia'; }).length %></em></button>
+        <button class="fchip" data-f="cultura" aria-pressed="false"><%- icon('boat') %><span>Cultura e mar</span><em><%= places.filter(function(x){ return x.cat === 'cultura'; }).length %></em></button>
+      </div>
+      <label class="search"><%- icon('pin') %><input id="placeSearch" type="search" placeholder="Buscar lugar…" aria-label="Buscar lugar"></label>
+    </div>
+
+    <div class="grid places" id="placeGrid">
+      <% places.forEach(function(p, i){ %>
+      <article class="pcard reveal tilt" data-cat="<%= p.cat %>" data-name="<%= p.name.toLowerCase() %> <%= p.tags.join(' ') %>" style="--ac:<%= accents[p.cat] %>;--d:<%= i %>">
+        <button class="pcard-hit" data-open="place:<%= p.id %>" aria-label="Abrir ficha: <%= p.name %>"></button>
+        <div class="art"><%- icon(p.icon, 'big') %><span class="waves"></span></div>
+        <div class="pbody">
+          <span class="ptag"><%= {fe:'Fé',praia:'Praia',cultura:'Cultura e mar'}[p.cat] %></span>
+          <h3><%= p.name %></h3>
+          <p><%= p.short %></p>
+          <div class="pfoot">
+            <span class="slot"><%- icon('clock') %> <%= p.slot %></span>
+            <button class="save" data-save="<%= p.id %>" aria-pressed="false" aria-label="Salvar no roteiro: <%= p.name %>"><%- icon('heart') %></button>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+    <p class="empty" id="placeEmpty" hidden>Nenhum lugar encontrado. Tente outro termo.</p>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<section class="sec light" id="historia">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>02</span> História</p>
+      <h2>Quatro séculos <em>entre a aldeia, o santo e a baía</em></h2>
+      <p class="lead">Arraste a linha do tempo, filtre por tema e abra cada ficha para ler os detalhes. Onde há lenda, dizemos que é lenda.</p>
+    </header>
+
+    <div class="toolbar reveal">
+      <div class="fchips" role="group" aria-label="Filtrar por tema" data-filter-group="history">
+        <button class="fchip on" data-f="all" aria-pressed="true"><%- icon('star') %><span>Tudo</span><em><%= history.length %></em></button>
+        <button class="fchip" data-f="fe" aria-pressed="false"><%- icon('church') %><span>Fé</span><em><%= history.filter(function(x){ return x.cat === 'fe'; }).length %></em></button>
+        <button class="fchip" data-f="territorio" aria-pressed="false"><%- icon('map') %><span>Território</span><em><%= history.filter(function(x){ return x.cat === 'territorio'; }).length %></em></button>
+        <button class="fchip" data-f="cultura" aria-pressed="false"><%- icon('drum') %><span>Cultura</span><em><%= history.filter(function(x){ return x.cat === 'cultura'; }).length %></em></button>
+      </div>
+      <div class="car-ctl" role="group" aria-label="Navegar na linha do tempo">
+        <button class="car-btn" id="tlPrev" aria-label="Voltar na linha do tempo"><%- icon('arrow', 'flip') %></button>
+        <span class="car-pos" id="tlPos">01 / <%= history.length %></span>
+        <button class="car-btn" id="tlNext" aria-label="Avançar na linha do tempo"><%- icon('arrow') %></button>
+      </div>
+    </div>
+
+    <div class="tl-rail reveal" id="tlRail" tabindex="0" aria-label="Linha do tempo da cidade">
+      <div class="tl-track" id="tlTrack">
+        <% history.forEach(function(h){ %>
+        <button class="tl-card" data-cat="<%= h.cat %>" data-open="history:<%= h.id %>" style="--ac:<%= accents[h.cat] %>">
+          <span class="tl-year"><%= h.year %></span>
+          <span class="tl-dot"></span>
+          <span class="tl-tag"><%= {fe:'Fé',territorio:'Território',cultura:'Cultura'}[h.cat] %></span>
+          <strong><%= h.title %></strong>
+          <span class="tl-short"><%= h.short %></span>
+          <span class="tl-more">Abrir ficha <%- icon('arrow') %></span>
+        </button>
+        <% }) %>
+      </div>
+    </div>
+    <div class="tl-bar reveal"><i id="tlBar"></i></div>
+  </div>
+</section>

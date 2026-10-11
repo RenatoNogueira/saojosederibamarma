@@ -1,0 +1,43 @@
+<section class="sec festejo" id="festejo">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>06</span> Festejo do padroeiro</p>
+      <h2>Setembro <em>é mês de romaria</em></h2>
+      <p class="lead">Patrimônio Cultural Imaterial do Maranhão desde 2024, o festejo ocupa o calendário do mês inteiro. Clique nos dias marcados ou nas abas para ver o percurso.</p>
+    </header>
+
+    <div class="fest-grid">
+      <div class="cal reveal">
+        <div class="cal-head"><strong><%= festejo.month %> <%= festejo.year %></strong><span>Tema: <em><%= festejo.theme %></em></span></div>
+        <div class="cal-week"><% ['D','S','T','Q','Q','S','S'].forEach(function(d){ %><i><%= d %></i><% }) %></div>
+        <div class="cal-days" id="calDays">
+          <% for (var b = 0; b < festejo.startsOn; b++) { %><span class="blank"></span><% } %>
+          <% for (var d = 1; d <= festejo.days; d++) {
+               var ev = festejo.events.find(function(e){ return e.day === d; });
+               var inSpan = d >= festejo.span[0] && d <= festejo.span[1]; %>
+            <% if (ev) { %>
+              <button class="day ev in" data-event="<%= ev.id %>" aria-label="<%= d %> de setembro: <%= ev.name %>"><%= d %></button>
+            <% } else { %>
+              <span class="day <%= inSpan ? 'in' : '' %>"><%= d %></span>
+            <% } %>
+          <% } %>
+        </div>
+        <p class="cal-note"><span class="sw in"></span> Festejo (1–28) &nbsp; <span class="sw ev"></span> Romarias. <%= festejo.note %></p>
+      </div>
+
+      <div class="routes reveal">
+        <div class="route-tabs" role="tablist" aria-label="Eventos do festejo">
+          <% festejo.events.forEach(function(e, i){ %>
+          <button role="tab" class="rt <%= i === 0 ? 'on' : '' %>" data-event="<%= e.id %>" aria-selected="<%= i === 0 %>"><%= e.name %></button>
+          <% }) %>
+        </div>
+        <div class="route-panel" id="routePanel" aria-live="polite">
+          <p class="r-when" id="rWhen"></p>
+          <h3 id="rName"></h3>
+          <p id="rDesc"></p>
+          <ol class="route" id="rStops"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

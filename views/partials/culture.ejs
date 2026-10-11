@@ -1,0 +1,21 @@
+<section class="sec light" id="cultura">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>08</span> Cultura viva</p>
+      <h2>O som da matraca, <em>o saber das marés</em></h2>
+      <p class="lead">Além da fé, a cidade tem festa junina, bumba-meu-boi, tambor de crioula e uma pesca que atravessa gerações.</p>
+    </header>
+
+    <div class="cult-grid">
+      <% culture.forEach(function(c, i){ %>
+      <button class="cult reveal" data-open="culture:<%= c.id %>" style="--ac:<%= c.ac %>;--d:<%= i %>">
+        <span class="cult-ic"><%- icon(c.icon) %></span>
+        <span class="cult-k"><%= c.kicker %></span>
+        <strong><%= c.name %></strong>
+        <span class="cult-s"><%= c.short %></span>
+        <span class="cult-go"><%- icon('arrow') %></span>
+      </button>
+      <% }) %>
+    </div>
+  </div>
+</section>
