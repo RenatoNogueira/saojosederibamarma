@@ -1,0 +1,69 @@
+<section class="sec light sab-sec" id="sabores">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>05</span> Sabores e hospedagem</p>
+      <h2>Comer bem <em>e onde dormir</em></h2>
+      <p class="lead">O peixe à pedra é o cartão-postal, mas a mesa de Ribamar vai de torta de camarão a galinha caipira. Veja o que provar, onde sentar e onde ficar. Notas, preços e horários mudam: confirme antes de ir.</p>
+    </header>
+
+    <h3 class="sub reveal">O que provar</h3>
+    <div class="dish-grid">
+      <% dishes.forEach(function(d, i){ %>
+      <button class="dish reveal" data-open="dish:<%= d.id %>" style="--ac:<%= d.ac %>;--d:<%= i %>">
+        <span class="dish-ic"><%- icon(d.icon) %></span>
+        <span class="dish-k"><%= d.kicker %></span>
+        <strong><%= d.name %></strong>
+        <span class="dish-s"><%= d.short %></span>
+        <span class="dish-go"><%- icon('arrow') %></span>
+      </button>
+      <% }) %>
+    </div>
+
+    <h3 class="sub reveal">Onde comer</h3>
+    <div class="toolbar reveal">
+      <div class="fchips" id="eatChips" role="group" aria-label="Filtrar por região" data-filter-group="eats">
+        <button class="fchip on" data-f="all" aria-pressed="true"><%- icon('fork') %><span>Todos</span><em><%= eats.length %></em></button>
+        <% eatAreas.forEach(function(a){ %>
+        <button class="fchip" data-f="<%= a.id %>" aria-pressed="false"><%- icon('pin') %><span><%= a.name %></span><em><%= eats.filter(function(e){ return e.area === a.id; }).length %></em></button>
+        <% }) %>
+      </div>
+    </div>
+    <p class="area-note reveal" id="eatNote"><%= eatAreas[0].note %></p>
+
+    <div class="eat-grid" id="eatGrid">
+      <% eats.forEach(function(e, i){ %>
+      <article class="eat reveal" data-area="<%= e.area %>" style="--d:<%= i %>">
+        <div class="eat-top">
+          <h4><%= e.name %></h4>
+          <% if (e.rating) { %><span class="rate" title="Nota média e número de avaliações"><%- icon('star') %> <%= e.rating %> <small>(<%= fmt(e.n) %>)</small></span><% } %>
+        </div>
+        <p class="eat-food"><%= e.food %></p>
+        <p class="eat-where"><%- icon('pin') %> <%= e.where %></p>
+        <div class="eat-foot">
+          <% if (e.price) { %><span class="tag">Preço <%= e.price %></span><% } %>
+          <% if (e.src) { %><span class="tag">Nota: <%= e.src %></span><% } %>
+          <a class="eat-link" href="https://www.google.com/maps/search/?api=1&query=<%= encodeURIComponent(e.name + ', São José de Ribamar, MA') %>" target="_blank" rel="noopener">Ver no mapa<span class="sr"> (abre em nova aba)</span> <%- icon('arrow') %></a>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+    <p class="fine reveal">Notas do Google (via Wanderlog) e, quando indicado, do Restaurant Guru. Amostras e datas variam;
+      há vários endereços listados de forma imprecisa pelas fontes, então confira no aplicativo de mapa.</p>
+
+    <h3 class="sub reveal" id="ficar">Onde ficar</h3>
+    <div class="stay-grid">
+      <% stays.forEach(function(s, i){ %>
+      <button class="stay reveal" data-open="stay:<%= s.id %>" style="--ac:<%= s.ac %>;--d:<%= i %>">
+        <span class="stay-ic"><%- icon(s.icon) %></span>
+        <span class="stay-t"><strong><%= s.name %></strong><small><%= s.kicker %></small></span>
+        <span class="stay-s"><%= s.short %></span>
+        <span class="stay-go"><%- icon('arrow') %></span>
+      </button>
+      <% }) %>
+    </div>
+    <aside class="stay-note reveal">
+      <%- icon('bulb') %>
+      <div><strong><%= stayNote.title %></strong><p><%= stayNote.text %></p></div>
+    </aside>
+  </div>
+</section>

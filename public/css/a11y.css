@@ -1,0 +1,56 @@
+/* ===== Acessibilidade (carregado por último) ===== */
+:root{
+  --coral-strong:#c4402e;  /* fundo de botão com texto branco: 4,9:1 */
+  --coral-ink:#b8321f;     /* texto coral sobre papel claro: ≥ 5:1 */
+}
+
+/* contraste: botões primários e estados coral com texto branco */
+.btn.p,.day.ev.on,.save[aria-pressed="true"],.modal .btn.saved{background:var(--coral-strong);border-color:var(--coral-strong);color:#fff}
+.btn.p:hover{background:#a82d1b;border-color:#a82d1b}
+.light .btn.p{background:var(--coral-strong);border-color:var(--coral-strong)}
+.m-close:hover,.pl-x:hover,.l-x:hover{background:var(--coral-strong);border-color:var(--coral-strong)}
+
+/* contraste: rótulos coral sobre fundo claro */
+.light .eyebrow,.light h2 em,.tl-more,.dest-addr b,.tips .ic,.fchip .ic{color:var(--coral-ink)}
+.fchip.on .ic{color:var(--gold)}
+.dark .fchip .ic{color:var(--gold)}
+.dark .fchip.on .ic{color:#06143a}
+.light .eyebrow span{border-color:currentColor}
+
+/* contraste: textos auxiliares em fundo escuro */
+.sky-empty{color:#a9bdf0}
+.lf-count,.sky-meta,.hint,.pl-meter{color:#b9c8f5}
+.sky-meta button{color:#b9c8f5}
+
+/* foco visível em qualquer fundo */
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.light :focus-visible{outline-color:var(--ink)}
+.light .btn:focus-visible{outline-color:var(--ink)}
+.m-in :focus-visible,.lightbox :focus-visible,.dark :focus-visible{outline-color:var(--gold)}
+.lantern:focus-visible .lamp{box-shadow:0 0 0 4px #fff,0 0 22px 6px rgba(var(--kg),.7)}
+
+/* alvos de toque/clique com no mínimo 24 px (WCAG 2.5.8) */
+.srcs a{display:inline-block;padding:4px 0}
+.sky-meta button{padding:6px 4px;min-height:32px}
+.foot-h{font-family:inherit;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:600}
+
+/* o anel do carrossel agora é um botão */
+button.car-ring{background:none;border:0;padding:0;cursor:pointer;font-family:inherit;border-radius:50%}
+button.car-ring:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.car-ring.stopped .fg{animation:none;stroke-dashoffset:0;stroke:#fff;opacity:.5}
+.car-ring.stopped::after{content:"II";position:absolute;right:-2px;top:-2px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;
+  font-size:8px;font-weight:700;letter-spacing:0;background:var(--gold);color:#06143a}
+
+/* links dentro de texto longo reconhecíveis sem depender de cor */
+.srcs a{text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:3px}
+
+/* usuários que reduzem movimento: sem rotações, lanternas paradas, sem parallax */
+@media (prefers-reduced-motion:reduce){
+  .lantern{animation:none!important;bottom:auto;top:calc(20% + var(--sway,0px)*2)}
+  .sun::before,.sec.festejo::before,.m-side::before,.wave,.pcard .waves{animation:none!important}
+  .reveal{transition:none}
+}
+@media (forced-colors:active){
+  .btn,.fchip,.ichip,.dest,.car-btn{border:1px solid ButtonText}
+  .fchip.on,.ichip.on,.dest.on{outline:2px solid Highlight}
+}

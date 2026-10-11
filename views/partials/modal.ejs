@@ -1,0 +1,39 @@
+<dialog class="modal" id="modal" aria-labelledby="mTitle">
+  <div class="m-in" id="mIn">
+    <aside class="m-side">
+      <div class="m-badge" id="mArt"></div>
+      <p class="m-kind" id="mEyebrow"></p>
+      <div class="m-prog">
+        <span class="m-count" id="mCount"></span>
+        <div class="m-dots" id="mDots"></div>
+      </div>
+    </aside>
+
+    <div class="m-main">
+      <button class="m-close" id="mClose" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+
+      <div class="m-scroll" id="mScroll" tabindex="-1">
+        <h3 id="mTitle"></h3>
+        <div class="m-text" id="mText"></div>
+        <dl class="m-facts" id="mFacts"></dl>
+        <div class="m-tip" id="mTip" hidden></div>
+        <p class="m-src" id="mSrc"></p>
+      </div>
+
+      <footer class="m-bar">
+        <button class="m-step" id="mPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+          <span><small>Anterior</small><b id="mPrevLbl"></b></span>
+        </button>
+        <div class="m-acts">
+          <button class="btn" id="mMap" hidden><%- icon('pin') %> Como chegar</button>
+        <button class="btn" id="mSave" hidden>Salvar no roteiro</button>
+        </div>
+        <button class="m-step next" id="mNext" aria-label="Próximo">
+          <span><small>Próximo</small><b id="mNextLbl"></b></span>
+          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </footer>
+    </div>
+  </div>
+</dialog>

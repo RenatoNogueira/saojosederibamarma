@@ -1,0 +1,27 @@
+<dialog class="lightbox" id="lightbox" aria-label="Visualizador de fotos">
+  <div class="lb-main">
+    <div class="lb-top">
+      <span class="lb-count" id="lbCount" aria-live="polite"></span>
+      <div class="lb-tools">
+        <button class="lb-btn" id="lbZoom" aria-pressed="false" aria-label="Ampliar imagem"><%- icon('zoom') %></button>
+        <button class="lb-btn" id="lbClose" aria-label="Fechar visualizador"><%- icon('close') %></button>
+      </div>
+    </div>
+
+    <div class="lb-stage" id="lbStage">
+      <button class="lb-nav prev" id="lbPrev" aria-label="Foto anterior"><%- icon('arrow', 'flip') %></button>
+      <div class="lb-frame" id="lbFrame"><img id="lbImg" alt="" draggable="false"></div>
+      <button class="lb-nav next" id="lbNext" aria-label="Próxima foto"><%- icon('arrow') %></button>
+    </div>
+
+    <div class="lb-thumbs" id="lbThumbs" role="group" aria-label="Miniaturas"></div>
+  </div>
+
+  <aside class="lb-info">
+    <p class="lb-cat" id="lbCat"></p>
+    <h3 id="lbTitle"></h3>
+    <p class="lb-cap" id="lbCap"></p>
+    <p class="lb-meta" id="lbMeta"></p>
+    <button class="btn" id="lbMap" hidden><%- icon('pin') %> Como chegar</button>
+  </aside>
+</dialog>

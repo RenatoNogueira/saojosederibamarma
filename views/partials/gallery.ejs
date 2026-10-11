@@ -1,0 +1,44 @@
+<section class="sec dark gal-sec" id="galeria">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>09</span> Galeria</p>
+      <h2>Ribamar <em>em imagens</em></h2>
+      <p class="lead">Fé, orla e gente da cidade. Toque numa foto para ampliar e use as setas do teclado ou deslize o dedo para passar de uma a outra.</p>
+    </header>
+
+    <% var cats = ['fe','interior','cidade','cultura','mar'].filter(function(c){ return photos.some(function(p){ return p.cat === c; }); }); %>
+    <div class="toolbar reveal">
+      <div class="fchips" id="galChips" role="group" aria-label="Filtrar fotos" data-filter-group="gallery">
+        <button class="fchip on" data-f="all" aria-pressed="true"><%- icon('image') %><span>Todas</span><em><%= photos.length %></em></button>
+        <% cats.forEach(function(c){ %>
+        <button class="fchip" data-f="<%= c %>" aria-pressed="false"><%- icon({fe:'church',interior:'lantern',mar:'wave',cultura:'drum',cidade:'map'}[c]) %><span><%= catLabels[c] %></span><em><%= photos.filter(function(p){ return p.cat === c; }).length %></em></button>
+        <% }) %>
+      </div>
+      <p class="gal-count" id="galCount" aria-live="polite"><%= photos.length %> <%= photos.length === 1 ? 'foto' : 'fotos' %></p>
+    </div>
+
+    <% if (!photos.length) { %>
+    <p class="empty">Ainda não há fotos na galeria.</p>
+    <% } else { %>
+    <div class="gal-grid <%= photos.length <= 3 ? 'few' : '' %>" id="galGrid">
+      <% photos.forEach(function(p, i){ %>
+      <figure class="ph <%= p.shape %> <%= p.cutout ? 'cutout' : '' %> reveal" data-cat="<%= p.cat %>" data-id="<%= p.id %>" style="--d:<%= i %>">
+        <button class="ph-hit" data-photo="<%= p.id %>" aria-label="Ampliar foto: <%= p.title %>"></button>
+        <div class="ph-media">
+          <img src="<%= p.src %>" alt="<%= p.alt %>" width="<%= p.w %>" height="<%= p.h %>" loading="<%= i < 3 ? 'eager' : 'lazy' %>" decoding="async">
+        </div>
+        <figcaption>
+          <span class="ph-cat"><%= catLabels[p.cat] %></span>
+          <strong><%= p.title %></strong>
+          <% if (p.place) { %><small><%- icon('pin') %> <%= p.place %></small><% } %>
+        </figcaption>
+        <span class="ph-zoom" aria-hidden="true"><%- icon('expand') %></span>
+      </figure>
+      <% }) %>
+    </div>
+      <div class="gal-foot" id="galFoot">
+        <button class="btn" id="galMore" aria-expanded="false" aria-controls="galGrid"><%- icon('image') %> <span>Ver todas as <%= photos.length %> fotos</span></button>
+      </div>
+    <% } %>
+  </div>
+</section>

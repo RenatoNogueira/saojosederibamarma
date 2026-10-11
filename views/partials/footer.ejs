@@ -1,0 +1,19 @@
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div>
+      <a class="logo" href="#top"><b></b><span>Ribamar</span></a>
+      <p>Um retrato interativo de São José de Ribamar, no Maranhão. Feito com dados do IBGE e reportagens locais.</p>
+    </div>
+    <div>
+      <h3 class="foot-h">Fontes</h3>
+      <ul class="srcs">
+        <% sources.forEach(function(s){ %><li><a href="<%= s.url %>" target="_blank" rel="noopener"><%= s.name %><span class="sr"> (abre em nova aba)</span></a></li><% }) %>
+      </ul>
+    </div>
+    <div>
+      <h3 class="foot-h">Atenção</h3>
+      <p class="small">Datas de fundação variam entre fontes oficiais e religiosas. Horários, preços e percursos mudam: confirme com a prefeitura e o Santuário antes de visitar.</p>
+      <a class="btn" href="#top">Voltar ao topo</a>
+    </div>
+  </div>
+</footer>

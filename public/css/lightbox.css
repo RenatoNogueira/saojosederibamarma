@@ -1,0 +1,62 @@
+/* ===== Visualizador de fotos (substitui o layout anterior) ===== */
+.lightbox{border:0;padding:0;background:transparent;color:var(--cream);width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;overflow:hidden}
+.lightbox[open]{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,28vw,400px);grid-template-rows:minmax(0,1fr);animation:lb-in .45s var(--ease)}
+.lightbox::backdrop{background:radial-gradient(ellipse at 40% 30%,#0a1f55,#02061c 75%)}
+
+.lb-main{position:relative;display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-width:0;min-height:0;padding:0 clamp(8px,2vw,24px)}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 4px}
+.lb-stage{position:relative;min-height:0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(6px,1.6vw,18px)}
+
+/* a imagem sempre cabe inteira no quadro */
+.lb-frame{position:relative;width:100%;height:100%;min-height:0;border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+  background:rgba(2,8,30,.55);border:1px solid rgba(255,255,255,.08);touch-action:pan-y}
+.lb-frame img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;padding:0;
+  -webkit-mask-image:none;mask-image:none;filter:none;user-select:none;cursor:zoom-in;
+  transition:transform .45s var(--ease),opacity .35s;transform-origin:var(--ox,50%) var(--oy,50%)}
+.lb-frame.cut{background:radial-gradient(circle at 50% 35%,rgba(255,200,120,.35),transparent 60%),linear-gradient(180deg,#1b3f9c,#0a1f55)}
+.lb-frame.cut img{padding:2% 4%;-webkit-mask-image:none;mask-image:none;filter:drop-shadow(0 20px 30px rgba(0,0,20,.5))}
+.lb-frame img.swap{opacity:0;transform:scale(.97)}
+.lb-frame.zoomed{cursor:zoom-out}
+.lb-frame.zoomed img{transform:scale(2.2);cursor:zoom-out}
+
+.lb-thumbs{display:flex;gap:8px;justify-content:center;padding:12px 4px 16px;overflow-x:auto;scrollbar-width:none}
+.lb-thumbs::-webkit-scrollbar{display:none}
+.lb-thumb{flex:none;width:66px;height:48px}
+
+/* painel de informações */
+.lb-info{display:flex;flex-direction:column;gap:6px;padding:clamp(22px,3vw,40px) clamp(18px,2.4vw,32px);overflow-y:auto;min-height:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border-left:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px)}
+.lb-info .lb-cat{align-self:flex-start;margin-top:30px}
+.lb-info h3{margin:6px 0 10px}
+.lb-info .btn{align-self:flex-start;margin-top:18px}
+.lb-cap{font-size:15.5px}
+.lb-meta{display:block;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);line-height:1.7}
+
+/* celular / janela estreita: foto em cima ocupando a maior parte, informações embaixo */
+@media (max-width:860px){
+  .lightbox[open]{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+  .lb-main{padding:0 8px}
+  .lb-top{padding:10px 2px}
+  .lb-stage{grid-template-columns:minmax(0,1fr)}
+  .lb-nav{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:42px;height:42px;background:rgba(6,20,58,.72)}
+  .lb-nav:hover{transform:translateY(-50%) scale(1.08)}
+  .lb-nav.prev{left:8px}.lb-nav.next{right:8px}
+  .lb-thumbs{padding:8px 2px 10px}
+  .lb-thumb{width:54px;height:40px}
+  .lb-info{max-height:32dvh;padding:14px 16px 18px;border-left:0;border-top:1px solid rgba(255,255,255,.12)}
+  .lb-info .lb-cat{margin-top:0}
+  .lb-info h3{font-size:22px;margin:2px 0 6px}
+  .lb-cap{font-size:14px}
+  .lb-meta{margin-top:10px;padding-top:10px}
+  .lb-info .btn{margin-top:12px}
+}
+@media (max-height:520px) and (min-width:861px){.lb-thumbs{display:none}}
+
+/* neutraliza regras antigas do layout em uma coluna */
+.lb-stage{padding:0}
+.lb-info{max-width:none;width:auto;margin:0;align-items:stretch}
+.lb-info .lb-cat,.lb-info .btn{align-self:flex-start}
+.lb-info{justify-content:flex-start}
+.lb-info h3{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(24px,2.4vw,34px);line-height:1.1;letter-spacing:-.01em;margin:8px 0 12px;color:#fff}
+.lb-info .lb-cap{max-width:none}
+@media (max-width:860px){.lb-info h3{font-size:22px;margin:2px 0 6px}}

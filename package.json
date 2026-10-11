@@ -1,0 +1,27 @@
+{
+  "name": "sao-jose-de-ribamar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site interativo sobre São José de Ribamar (MA), construído com EJS",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node build.js",
+    "validate": "node scripts/validate.js",
+    "test": "node --test",
+    "check": "npm run build && npm run validate && npm test",
+    "clean:css": "node scripts/clean-css.js",
+    "clean:css:write": "node scripts/clean-css.js --write",
+    "images": "node scripts/optimize-images.js",
+    "images:force": "node scripts/optimize-images.js --force"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}
