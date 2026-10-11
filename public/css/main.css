@@ -273,3 +273,7 @@ a{color:inherit}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 
+
+/* logo com nome completo: não quebra e se ajusta em telas estreitas */
+.logo span{white-space:nowrap}
+@media (max-width:400px){.logo{font-size:16px;gap:8px}}
