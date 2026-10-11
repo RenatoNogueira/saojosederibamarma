@@ -16,7 +16,8 @@
     "clean:css": "node scripts/clean-css.js",
     "clean:css:write": "node scripts/clean-css.js --write",
     "images": "node scripts/optimize-images.js",
-    "images:force": "node scripts/optimize-images.js --force"
+    "images:force": "node scripts/optimize-images.js --force",
+    "og": "node scripts/make-og.js"
   },
   "dependencies": {
     "ejs": "^3.1.10"

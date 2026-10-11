@@ -288,7 +288,7 @@ function validateProject() {
     const d = path.join(PUB, sub);
     if (!exists(d)) return;
     fs.readdirSync(d).forEach(f => {
-      if (/\.(jpe?g|png)$/i.test(f)) warn('imagens', `public/${sub}/${f} não é WebP: coloque o original em assets-src/${sub}/ e rode npm run images`);
+      if (/\.(jpe?g|png)$/i.test(f) && f !== 'og.jpg') warn('imagens', `public/${sub}/${f} não é WebP: coloque o original em assets-src/${sub}/ e rode npm run images`);
       if (/\.webp$/i.test(f)) {
         const base = f.replace(/\.webp$/i, '');
         const src = path.join(ROOT, 'assets-src', sub);
