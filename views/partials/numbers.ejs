@@ -6,7 +6,11 @@
       <p class="lead">Segundo o Censo 2022 do IBGE, São José de Ribamar é um dos municípios que mais cresceram no país. Os números abaixo contam esse movimento.</p>
     </header>
 
-    <div class="metrics">
+    <div class="eat-nav met-nav" data-for="metricGrid">
+      <button type="button" class="eat-arrow" data-dir="-1" aria-label="Números anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="1" aria-label="Próximos números"><%- icon('arrow') %></button>
+    </div>
+    <div class="metrics" id="metricGrid" data-rail>
       <% numbers.forEach(function(n, i){ %>
       <article class="metric reveal" style="--d:<%= i %>">
         <%- icon(n.icon) %>
