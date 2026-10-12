@@ -123,3 +123,13 @@
   .stay-go{display:none}
 }
 .dish-grid::-webkit-scrollbar,.stay-grid::-webkit-scrollbar,.eat-grid::-webkit-scrollbar{display:none}
+
+/* carrosséis de lugares e cultura (reaproveitam as setas e o arrastar) */
+.grid.places,.cult-grid{overflow-x:auto;scroll-snap-type:x proximity;padding:14px 4px 34px;margin-bottom:-14px;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
+.grid.places::-webkit-scrollbar,.cult-grid::-webkit-scrollbar{display:none}
+.grid.places.drag,.cult-grid.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.grid.places>.pcard,.cult-grid>.cult{scroll-snap-align:start}
+.grid.places:focus-visible,.cult-grid:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.dark .eat-arrow{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#fff}
+.dark .eat-arrow:hover:not(:disabled){background:var(--gold);color:#06143a;border-color:var(--gold)}
+.dark .eat-arrow:focus-visible{outline-color:var(--gold)}

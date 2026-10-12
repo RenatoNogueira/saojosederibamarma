@@ -120,7 +120,7 @@ a{color:inherit}
 .tl-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--blue));border-radius:4px;transition:width .15s}
 
 /* ===== Lugares ===== */
-.grid.places{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:20px}
+.grid.places{display:grid;grid-auto-flow:column;grid-auto-columns:min(300px,80vw);gap:20px}
 .pcard{position:relative;border-radius:24px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
   transition:transform .35s var(--ease),box-shadow .35s,border-color .3s;transform-style:preserve-3d}
 .pcard.hide{display:none}
@@ -190,7 +190,7 @@ a{color:inherit}
 @keyframes stop{to{opacity:1;transform:none}}
 
 /* ===== Cultura ===== */
-.cult-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.cult-grid{display:grid;grid-auto-flow:column;grid-auto-columns:min(270px,78vw);gap:18px}
 .cult{position:relative;text-align:left;font:inherit;cursor:pointer;color:#fff;border-radius:26px;padding:26px 24px 24px;min-height:300px;border:0;
   background:linear-gradient(165deg,color-mix(in srgb,var(--ac) 35%,#0a1f55),#06143a 85%);overflow:hidden;display:flex;flex-direction:column;gap:8px;
   transition:transform .45s var(--ease),box-shadow .45s}

@@ -10,8 +10,8 @@
     const nav = document.querySelector('.eat-nav[data-for="' + grid.id + '"]');
     const prev = nav && nav.querySelector('[data-dir="-1"]'), next = nav && nav.querySelector('[data-dir="1"]');
     const update = () => {
-      const max = grid.scrollWidth - grid.clientWidth - 2;
-      if (prev) prev.disabled = grid.scrollLeft <= 2;
+      const max = grid.scrollWidth - grid.clientWidth - 8;
+      if (prev) prev.disabled = grid.scrollLeft <= 8;
       if (next) next.disabled = grid.scrollLeft >= max;
       if (nav) nav.classList.toggle('static', max <= 0);
       if (extra) extra();

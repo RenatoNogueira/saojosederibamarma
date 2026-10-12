@@ -6,7 +6,11 @@
       <p class="lead">Além da fé, a cidade tem festa junina, bumba-meu-boi, tambor de crioula e uma pesca que atravessa gerações.</p>
     </header>
 
-    <div class="cult-grid">
+    <div class="eat-nav" data-for="cultGrid">
+      <button type="button" class="eat-arrow" data-dir="-1" aria-label="Cartões anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="1" aria-label="Cartões seguintes"><%- icon('arrow') %></button>
+    </div>
+    <div class="cult-grid" id="cultGrid" data-rail tabindex="0" aria-label="Cultura viva (deslize para o lado)">
       <% culture.forEach(function(c, i){ %>
       <button class="cult reveal" data-open="culture:<%= c.id %>" style="--ac:<%= c.ac %>;--d:<%= i %>">
         <span class="cult-ic"><%- icon(c.icon) %></span>

@@ -180,6 +180,7 @@
       });
       $$('#placesChips .fchip').forEach(b => { b.querySelector('em').textContent = cnt[b.dataset.f] || 0; });
       $('#placeEmpty').hidden = n > 0;
+      const pg = $('#placeGrid'); pg.scrollLeft = 0; pg.dispatchEvent(new Event('scroll'));
     };
     chipGroup('places', f => { cat = f; apply(); });
     $('#placeSearch').addEventListener('input', e => { q = e.target.value.trim().toLowerCase(); apply(); });

@@ -16,7 +16,11 @@
       <label class="search"><%- icon('pin') %><input id="placeSearch" type="search" placeholder="Buscar lugar…" aria-label="Buscar lugar"></label>
     </div>
 
-    <div class="grid places" id="placeGrid">
+    <div class="eat-nav" data-for="placeGrid">
+      <button type="button" class="eat-arrow" data-dir="-1" aria-label="Lugares anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="1" aria-label="Lugares seguintes"><%- icon('arrow') %></button>
+    </div>
+    <div class="grid places" id="placeGrid" data-rail tabindex="0" aria-label="Lugares (deslize para o lado)">
       <% places.forEach(function(p, i){ %>
       <article class="pcard reveal tilt" data-cat="<%= p.cat %>" data-name="<%= p.name.toLowerCase() %> <%= p.tags.join(' ') %>" style="--ac:<%= accents[p.cat] %>;--d:<%= i %>">
         <button class="pcard-hit" data-open="place:<%= p.id %>" aria-label="Abrir ficha: <%= p.name %>"></button>
