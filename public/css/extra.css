@@ -88,14 +88,14 @@
 .dry-dot{width:22px;height:4px;border-radius:4px;background:linear-gradient(90deg,#5fd0ff,#ffc861)}
 
 .ev-list{list-style:none;margin-top:26px;position:relative;display:grid;gap:12px}
-.ev-list::before{content:"";position:absolute;left:84px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--coral));opacity:.5}
+.ev-list::before{content:"";position:absolute;left:127px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--coral));opacity:.5}
 .ev.hide{display:none}
-.ev-btn{width:100%;display:grid;grid-template-columns:70px 28px 1fr auto;gap:0 14px;align-items:center;text-align:left;font:inherit;color:#fff;cursor:pointer;
+.ev-btn{width:100%;display:grid;grid-template-columns:88px 28px 1fr auto;gap:0 14px;align-items:center;text-align:left;font:inherit;color:#fff;cursor:pointer;
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:14px 18px 14px 10px;transition:transform .35s var(--ease),border-color .3s,background .3s}
 .ev-btn:hover{transform:translateX(6px);border-color:var(--ac);background:rgba(255,255,255,.09)}
 .ev-btn:focus-visible{outline:3px solid var(--gold)}
 .ev-date{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.1}
-.ev-date b{font-family:'Fraunces',serif;font-size:19px;color:var(--ac)}
+.ev-date b{font-family:'Fraunces',serif;font-size:16px;color:var(--ac);white-space:nowrap}
 .ev-date small{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#9fb4ea}
 .ev-dot{position:relative;z-index:1;width:28px;height:28px;border-radius:50%;background:var(--ac);color:#06143a;display:grid;place-items:center;box-shadow:0 0 0 5px rgba(6,20,58,.9)}
 .ev-dot .ic{width:15px;height:15px}
