@@ -28,7 +28,7 @@ a{color:inherit}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Fraunces',serif;font-weight:600;font-size:19px}
 .logo b{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
 #navLinks{display:flex;gap:4px}
-#navLinks a{font-size:13.5px;text-decoration:none;padding:8px 13px;border-radius:99px;color:#dbe6ff;transition:.25s}
+#navLinks a{white-space:nowrap;font-size:13.5px;text-decoration:none;padding:8px 13px;border-radius:99px;color:#dbe6ff;transition:.25s}
 #navLinks a:hover{background:rgba(255,255,255,.1)}
 #navLinks a.on{background:var(--gold);color:var(--navy);font-weight:600}
 .burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);cursor:pointer;position:relative}
