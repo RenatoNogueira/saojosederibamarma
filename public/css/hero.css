@@ -174,14 +174,9 @@
   background:radial-gradient(circle,rgba(200,215,255,.34) 0%,rgba(150,175,255,.14) 45%,transparent 70%)}
 .hero[data-time="night"] .moon-wrap{opacity:1;transform:none}
 .moon{position:absolute;inset:0;border-radius:50%;transform:translateY(40vh) scale(.85);opacity:0;
-  background:
-    radial-gradient(circle at 30% 36%,rgba(140,145,130,.38) 0 7%,transparent 8%),
-    radial-gradient(circle at 63% 27%,rgba(140,145,130,.32) 0 5%,transparent 6%),
-    radial-gradient(circle at 56% 61%,rgba(140,145,130,.36) 0 10%,transparent 11%),
-    radial-gradient(circle at 27% 68%,rgba(140,145,130,.30) 0 6%,transparent 7%),
-    radial-gradient(circle at 76% 55%,rgba(140,145,130,.26) 0 4%,transparent 5%),
-    radial-gradient(circle at 34% 30%,#fffef4 0%,#efecd0 55%,#c9c6a6 100%);
-  box-shadow:0 0 50px 8px rgba(225,235,255,.55),0 0 170px 60px rgba(110,140,255,.22),inset -16px -12px 30px rgba(120,120,100,.28)}
+  background:url("../img/lua.webp") center/100% 100% no-repeat;
+  filter:brightness(1.12) contrast(1.05) sepia(.12);
+  box-shadow:0 0 60px 6px rgba(225,235,255,.45),0 0 190px 70px rgba(110,140,255,.2)}
 .hero.ready[data-time="night"] .moon{animation:sunrise 2.4s .5s var(--ease) forwards}
 
 /* texto legível sobre o céu claro */

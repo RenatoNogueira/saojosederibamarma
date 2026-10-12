@@ -16,6 +16,8 @@ const JOBS = [
   { src: 'assets-src/img', out: 'public/img', width: 1200, quality: 82 }
 ];
 const EXT = /\.(jpe?g|png)$/i;
+/* largura própria para arquivos específicos (a lua é exibida pequena) */
+const OVERRIDES = { 'lua.png': 720 };
 
 (async () => {
   let converted = 0, skipped = 0, before = 0, after = 0;
@@ -30,7 +32,7 @@ const EXT = /\.(jpe?g|png)$/i;
       if (!force && fs.existsSync(output) && fs.statSync(output).mtimeMs >= fs.statSync(input).mtimeMs) { skipped++; continue; }
       const info = await sharp(input)
         .rotate()                                        /* respeita a orientação EXIF */
-        .resize({ width: job.width, withoutEnlargement: true })
+        .resize({ width: OVERRIDES[file] || job.width, withoutEnlargement: true })
         .webp({ quality: job.quality, alphaQuality: 90, effort: 5 })
         .toFile(output);
       const a = fs.statSync(input).size;
