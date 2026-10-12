@@ -179,3 +179,10 @@
   .cal-side .mon{padding:12px 6px 10px}
   .cal-main .ev-list{margin-top:0}
 }
+
+/* Panorama: o mesmo céu estrelado discreto da seção das lanternas */
+#numeros::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("../img/estrelas.svg") center top/1200px 800px repeat;opacity:.6;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);mask:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%)}
+#numeros>.wrap{position:relative;z-index:1}
+@media (max-width:760px){#numeros::after{background-size:900px 600px;opacity:.5}}
