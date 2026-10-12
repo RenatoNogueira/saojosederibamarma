@@ -65,6 +65,21 @@
     apply('all');
   }
 
+  /* vídeo: o iframe do YouTube só é criado ao clicar (nada é carregado antes) */
+  const vid = $('#vidPlay');
+  if (vid) {
+    vid.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + vid.dataset.yt + '?autoplay=1&rel=0';
+      f.title = vid.dataset.title;
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      vid.replaceWith(f);
+      f.focus();
+    });
+  }
+
   /* calendário: filtro por mês */
   const strip = $('#monthStrip');
   if (strip) {

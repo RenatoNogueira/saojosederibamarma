@@ -44,7 +44,7 @@
   links.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && links.classList.contains('open')) setMenu(false, true); });
   document.addEventListener('click', e => { if (links.classList.contains('open') && !e.target.closest('#siteNav')) setMenu(false); });
-  matchMedia('(min-width: 1181px)').addEventListener?.('change', ev => { if (ev.matches) setMenu(false); });
+  matchMedia('(min-width: 1241px)').addEventListener?.('change', ev => { if (ev.matches) setMenu(false); });
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) $$('[data-spy]').forEach(a => a.classList.toggle('on', a.dataset.spy === e.target.id));
   }), { rootMargin: '-45% 0px -50% 0px' });

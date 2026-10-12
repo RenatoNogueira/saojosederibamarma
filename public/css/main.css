@@ -258,8 +258,8 @@ a{color:inherit}
   .sabia{grid-template-columns:1fr}
 }
 /* nav compacto */
-#navLinks a{font-size:13px;padding:7px 10px}
-@media (max-width:1180px){
+#navLinks a{font-size:13px;padding:7px 8px}
+@media (max-width:1240px){
   .burger{display:block}
   #navLinks{visibility:hidden;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;transition:transform .5s var(--ease),visibility 0s .5s;position:fixed;inset:0 0 auto 0;top:0;padding:84px 24px 28px;flex-direction:column;background:rgba(6,20,58,.97);backdrop-filter:blur(18px);
     transform:translateY(-100%);z-index:-1;border-bottom:1px solid rgba(255,214,140,.3)}

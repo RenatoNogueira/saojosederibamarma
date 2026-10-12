@@ -4,7 +4,7 @@
 .nav-share:hover{background:var(--gold);color:#06143a;border-color:var(--gold);transform:translateY(-2px)}
 .nav-share:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .nav-share .ic{width:19px;height:19px}
-@media (min-width:1181px){.nav-share{margin-right:0}}
+@media (min-width:1241px){.nav-share{margin-right:0}}
 .foot-share{margin-top:16px}
 
 .share{border:0;padding:0;background:transparent;color:var(--cream);width:min(460px,94vw);max-height:92vh;margin:auto;overflow:visible}

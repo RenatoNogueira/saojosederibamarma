@@ -164,4 +164,14 @@ const seasons = {
   tide: 'Consulte a tábua de marés: em Panaquatira são quase 5 km de mar calmo e raso na maré baixa.'
 };
 
-module.exports = { dishes, eatAreas, eats, stays, stayNote, months, events, seasons };
+/* vídeo incorporado do YouTube (carregado só ao clicar, via youtube-nocookie) */
+const video = {
+  id: '-ggdMV0-T4o',
+  year: 1989,
+  title: 'São José de Ribamar (MA) em 1989',
+  author: 'Sertões Gerais — Evandro Aquino',
+  url: 'https://www.youtube.com/watch?v=-ggdMV0-T4o',
+  authorUrl: 'https://www.youtube.com/@Sert%C3%B5esGerais.EvandroAquino'
+};
+
+module.exports = { video, dishes, eatAreas, eats, stays, stayNote, months, events, seasons };

@@ -244,7 +244,7 @@ const routes = [
 
 const nav = [
   ['numeros', 'Números'], ['historia', 'História'], ['lugares', 'Lugares'], ['mapa', 'Como chegar'], ['sabores', 'Sabores'], ['festejo', 'Festejo'], ['calendario', 'Calendário'],
-  ['cultura', 'Cultura'], ['galeria', 'Galeria'], ['roteiro', 'Roteiro'], ['quiz', 'Quiz']
+  ['cultura', 'Cultura'], ['galeria', 'Galeria'], ['video', 'Vídeo'], ['roteiro', 'Roteiro'], ['quiz', 'Quiz']
 ];
 
 module.exports = { getting, routes, accents, numbers, sabia, history, places, festejo, culture, quiz, sources, nav };

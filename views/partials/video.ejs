@@ -1,0 +1,18 @@
+<section class="sec light vid-sec" id="video">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <p class="eyebrow"><span>10</span> Ribamar de antigamente</p>
+      <h2>A cidade <em>em <%= video.year %></em></h2>
+      <p class="lead">Um registro em vídeo da cidade em <%= video.year %>, feito no fim dos anos 1980, para comparar com a Ribamar de hoje. Aperte o play para assistir.</p>
+    </header>
+
+    <div class="vid-frame reveal">
+      <button type="button" class="vid-play" id="vidPlay" data-yt="<%= video.id %>" data-title="<%= video.title %>" aria-label="Reproduzir o vídeo: <%= video.title %>">
+        <span class="vid-btn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+        <span class="vid-year"><%= video.title %><small>Toque para carregar o vídeo do YouTube</small></span>
+      </button>
+    </div>
+    <p class="vid-credit reveal">Vídeo de <a href="<%= video.authorUrl %>" target="_blank" rel="noopener"><%= video.author %><span class="sr"> (abre em nova aba)</span></a>,
+      publicado no <a href="<%= video.url %>" target="_blank" rel="noopener">YouTube<span class="sr"> (abre em nova aba)</span></a>. O vídeo só é carregado quando você aperta o play; o YouTube pode registrar a visualização.</p>
+  </div>
+</section>

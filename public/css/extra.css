@@ -124,6 +124,24 @@
 }
 .dish-grid::-webkit-scrollbar,.stay-grid::-webkit-scrollbar,.eat-grid::-webkit-scrollbar{display:none}
 
+/* ===== Vídeo (Ribamar em 1989) ===== */
+.vid-sec .vid-frame{position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#06143a;box-shadow:0 30px 70px rgba(11,26,68,.35);border:6px solid #fff}
+.vid-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-play{position:absolute;inset:0;width:100%;border:0;cursor:pointer;color:#fff;font:inherit;display:grid;place-items:center;text-align:center;padding:20px;
+  background:radial-gradient(ellipse at 50% 40%,rgba(255,200,97,.28),transparent 60%),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px),linear-gradient(160deg,#3b2a1a,#14213f 70%)}
+.vid-play::before,.vid-play::after{content:"";position:absolute;top:0;bottom:0;width:26px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.55) 0 14px,transparent 14px 30px);opacity:.35;-webkit-mask:linear-gradient(90deg,#000 40%,transparent 41%);mask:linear-gradient(90deg,#000 40%,transparent 41%)}
+.vid-play::before{left:8px}.vid-play::after{right:8px;transform:scaleX(-1)}
+.vid-btn{display:grid;place-items:center;width:88px;height:88px;border-radius:50%;background:var(--gold);color:#06143a;box-shadow:0 0 0 12px rgba(255,200,97,.25);transition:transform .35s var(--ease)}
+.vid-btn svg{width:38px;height:38px;fill:currentColor;margin-left:5px}
+.vid-play:hover .vid-btn{transform:scale(1.1)}
+.vid-play:focus-visible{outline:4px solid var(--coral);outline-offset:-8px}
+.vid-year{position:absolute;left:0;right:0;bottom:16px;font-family:'Fraunces',serif;font-weight:800;font-size:clamp(20px,3.4vw,34px);text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.vid-year small{display:block;font:500 13px 'Space Grotesk',sans-serif;opacity:.85;margin-top:2px}
+.vid-credit{margin:14px 4px 0;font-size:13.5px;color:var(--ink2);max-width:70ch}
+.vid-credit a{color:#b8321f}
+.vid-credit a:focus-visible{outline:3px solid var(--coral);outline-offset:2px;border-radius:4px}
+@media (max-width:560px){.vid-sec .vid-frame{border-width:4px;border-radius:18px}.vid-btn{width:68px;height:68px}.vid-btn svg{width:30px;height:30px}.vid-play::before,.vid-play::after{display:none}}
+
 /* carrosséis de lugares e cultura (reaproveitam as setas e o arrastar) */
 .grid.places,.cult-grid{overflow-x:auto;scroll-snap-type:x proximity;padding:14px 4px 34px;margin-bottom:-14px;scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
 .grid.places::-webkit-scrollbar,.cult-grid::-webkit-scrollbar{display:none}

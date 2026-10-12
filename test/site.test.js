@@ -12,7 +12,7 @@ test('o site renderiza com todas as seções e sem resíduos de template', async
   assert.match(html, /<html lang="pt-BR"/);
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
   assert.doesNotMatch(html, /<%|%>/);
-  const sections = ['numeros', 'historia', 'lugares', 'mapa', 'sabores', 'festejo', 'calendario', 'cultura', 'galeria', 'roteiro', 'quiz', 'luzes'];
+  const sections = ['numeros', 'historia', 'lugares', 'mapa', 'sabores', 'festejo', 'calendario', 'cultura', 'galeria', 'video', 'roteiro', 'quiz', 'luzes'];
   sections.forEach(id => assert.match(html, new RegExp(`id="${id}"`), `seção #${id}`));
   assert.match(html, /id="skyToggle"/, 'botão dia/noite');
   assert.match(html, /class="moon"/, 'lua');
