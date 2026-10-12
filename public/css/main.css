@@ -256,9 +256,9 @@ a{color:inherit}
 #navLinks a{font-size:13px;padding:7px 10px}
 @media (max-width:1180px){
   .burger{display:block}
-  #navLinks{position:fixed;inset:0 0 auto 0;top:0;padding:84px 24px 28px;flex-direction:column;background:rgba(6,20,58,.97);backdrop-filter:blur(18px);
-    transform:translateY(-100%);transition:transform .5s var(--ease);z-index:-1;border-bottom:1px solid rgba(255,214,140,.3)}
-  #navLinks.open{transform:none}
+  #navLinks{visibility:hidden;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;transition:transform .5s var(--ease),visibility 0s .5s;position:fixed;inset:0 0 auto 0;top:0;padding:84px 24px 28px;flex-direction:column;background:rgba(6,20,58,.97);backdrop-filter:blur(18px);
+    transform:translateY(-100%);z-index:-1;border-bottom:1px solid rgba(255,214,140,.3)}
+  #navLinks.open{transform:none;visibility:visible;transition:transform .5s var(--ease),visibility 0s}
   #navLinks a{font-size:18px;padding:12px 8px}
 }
 @media (max-width:560px){
@@ -277,3 +277,7 @@ a{color:inherit}
 /* logo com nome completo: não quebra e se ajusta em telas estreitas */
 .logo span{white-space:nowrap}
 @media (max-width:400px){.logo{font-size:16px;gap:8px}}
+
+/* menu aberto: trava a rolagem da página e escurece o fundo */
+html.menu-open,html.menu-open body{overflow:hidden}
+html.menu-open body::after{content:"";position:fixed;inset:0;z-index:90;background:rgba(2,7,28,.6);animation:m-fade .3s}
