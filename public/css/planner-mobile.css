@@ -1,0 +1,67 @@
+/* ===== Roteiro no celular: passo a passo (ver js/planner-mobile.js) ===== */
+@media (min-width:761px){.pl-m-only{display:none!important}}
+
+@media (max-width:760px){
+  .planner{display:block;position:relative}
+
+  /* etapas no topo */
+  .pl-steps{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;margin-bottom:14px;border-radius:99px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+  .pl-steps button{font:inherit;font-weight:600;font-size:14px;min-height:46px;border-radius:99px;border:0;background:transparent;color:#cfdbff;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+  .pl-steps button b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:rgba(255,255,255,.14)}
+  .pl-steps button.on{background:var(--gold);color:#06143a}
+  .pl-steps button.on b{background:rgba(6,20,58,.15)}
+  .pl-steps button:focus-visible{outline:3px solid var(--cream);outline-offset:2px}
+
+  /* um painel por vez */
+  .planner[data-step="1"] .pl-out{display:none}
+  .planner[data-step="2"] .pl-controls{display:none}
+  .pl-panel{padding:18px 16px 20px;border-radius:24px}
+  .pl-head{margin-bottom:14px}
+  .pl-step{display:none}
+  .pl-actions #planGen,#planShare{display:none}
+
+  /* interesses: cartões grandes, 2 por linha */
+  .pl-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ichip{flex-direction:column;justify-content:center;gap:8px;min-height:84px;border-radius:20px;padding:12px 8px;font-size:15px;text-align:center;line-height:1.2}
+  .ichip .ic{width:28px;height:28px}
+  .ichip:hover{transform:none}
+  .pl-meter{display:none}
+  .pl-actions{margin-top:14px}
+  .pl-actions #planClear{width:100%;justify-content:center;min-height:46px}
+  .hint{margin-top:12px}
+
+  /* partes do dia: uma por vez */
+  .pl-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:14px}
+  .pl-tabs button{font:inherit;font-weight:600;font-size:15px;min-height:48px;border-radius:16px;border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.05);color:#dbe6ff;cursor:pointer}
+  .pl-tabs button span:not(:empty){display:inline-grid;place-items:center;min-width:20px;height:20px;margin-left:6px;border-radius:99px;font-size:12px;background:rgba(255,255,255,.16)}
+  .pl-tabs button.on{background:var(--gold);color:#06143a;border-color:var(--gold)}
+  .pl-tabs button.on span{background:rgba(6,20,58,.18)}
+  .pl-tabs button:focus-visible{outline:3px solid var(--cream);outline-offset:2px}
+  .pl-day{display:none}
+  .pl-slots[data-active="0"]>.pl-slot:not(:nth-child(1)),
+  .pl-slots[data-active="1"]>.pl-slot:not(:nth-child(2)),
+  .pl-slots[data-active="2"]>.pl-slot:not(:nth-child(3)){display:none}
+  .pl-stop{padding:12px}
+  .pl-name{min-height:48px}
+  .pl-x{width:44px;height:44px}
+  .pl-foot{justify-content:stretch}
+  .pl-foot #planCopy{flex:1;min-height:48px;justify-content:center}
+
+  /* barra de ações fixa na base da seção */
+  .pl-bar{position:sticky;bottom:12px;z-index:6;display:flex;gap:8px;margin-top:14px;padding:8px;border-radius:22px;
+    background:rgba(6,20,58,.92);border:1px solid rgba(255,214,140,.35);box-shadow:0 14px 40px rgba(0,3,20,.55);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .pl-bar button{font:inherit;font-weight:700;font-size:16px;min-height:54px;border-radius:16px;border:0;cursor:pointer;flex:1;
+    display:flex;align-items:center;justify-content:center;gap:10px}
+  .pl-bar-main{background:var(--gold);color:#06143a}
+  .pl-bar-sec{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)!important}
+  .pl-bar-n:not(:empty){display:inline-grid;place-items:center;min-width:26px;height:26px;border-radius:99px;font-size:13px;background:rgba(6,20,58,.18)}
+  .pl-bar.empty [data-act="gen"]{opacity:.65}
+  .pl-bar button:focus-visible{outline:3px solid var(--cream);outline-offset:2px}
+  .planner[data-step="1"] .pl-bar [data-act="edit"],.planner[data-step="1"] .pl-bar [data-act="share"]{display:none}
+  .planner[data-step="2"] .pl-bar [data-act="gen"]{display:none}
+  .planner[data-step="2"] .pl-bar [data-act="edit"]{flex:0 0 42%}
+}
