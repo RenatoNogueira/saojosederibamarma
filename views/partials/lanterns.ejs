@@ -1,16 +1,16 @@
 <section class="sec lanterns" id="luzes">
   <div class="wrap narrow">
     <header class="sec-head reveal">
-      <p class="eyebrow"><span>13</span> Procissão luminosa</p>
-      <h2>Acenda <em>uma luz</em></h2>
-      <p class="lead" id="lLead">Escolha o que sua lanterna carrega, escreva uma frase e solte-a no céu da procissão. Ela fica guardada neste navegador — e só você a vê.</p>
+      <p class="eyebrow"><span>13</span> Altar das velas</p>
+      <h2>Acenda <em>uma vela</em></h2>
+      <p class="lead" id="lLead">Escolha o que sua vela carrega, escreva uma frase e acenda-a no altar. Ela fica guardada neste navegador — e só você a vê.</p>
     </header>
 
     <div class="lant-grid">
     <form class="lantern-form reveal" id="lanternForm" data-k="gratidao">
       <div class="lf-main">
         <div class="lf-fields">
-          <p class="lf-title">O que sua luz carrega?</p>
+          <p class="lf-title">O que sua vela carrega?</p>
           <div class="kinds" role="radiogroup" aria-label="Tipo de intenção">
             <button type="button" class="kind" role="radio" aria-checked="true" data-k="gratidao">Gratidão<small>agradecer uma graça</small></button>
             <button type="button" class="kind" role="radio" aria-checked="false" data-k="pedido">Pedido<small>pedir proteção</small></button>
@@ -25,7 +25,7 @@
           </div>
 
           <div class="lf-share" id="lShareRow" hidden>
-            <label><input type="checkbox" id="lShare" checked><span>Deixar que outras pessoas leiam esta lanterna</span></label>
+            <label><input type="checkbox" id="lShare" checked><span>Deixar que outras pessoas leiam esta vela</span></label>
             <p>Mensagens públicas passam por um filtro, ficam visíveis por até 7 dias e podem ser denunciadas. Não escreva dados pessoais.</p>
           </div>
 
@@ -34,27 +34,41 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle class="bg" cx="12" cy="12" r="10"/><circle class="fg" id="lRing" cx="12" cy="12" r="10"/></svg>
               <span id="lCount">0 / 140</span>
             </span>
-            <button class="lf-submit" type="submit">Soltar lanterna ✦</button>
+            <button class="lf-submit" type="submit">Acender vela ✦</button>
           </div>
         </div>
 
         <div class="lf-preview" aria-hidden="true">
-          <div class="lantern-shell" id="lPreview">
-            <span class="lamp-wrap" style="--glow:.7"><span class="halo"></span><span class="lamp"><i></i></span></span>
+          <div class="candle-prev" id="lPreview" style="--glow:.7">
+            <span class="flame"></span><span class="wick"></span><span class="wax"></span>
           </div>
-          <p>Sua lanterna</p>
+          <p>Sua vela</p>
         </div>
       </div>
     </form>
 
     <div class="sky-wrap reveal">
       <div class="sky-meta">
-        <span><b id="skyCount">0</b> <span id="skyLbl">lanternas no céu</span><em id="skyHint" hidden> · toque em uma para ler</em></span>
-        <button type="button" id="skyClear">Limpar minhas lanternas</button>
+        <span><b id="skyCount">0</b> <span id="skyLbl">velas no altar</span><em id="skyHint" hidden> · toque em uma para ler</em></span>
+        <button type="button" id="skyClear">Limpar minhas velas</button>
       </div>
-      <div class="sky-box" id="skyBox" aria-label="Céu com as lanternas acesas">
-        <div class="sea-l" aria-hidden="true"><span></span><span></span><span></span></div>
-        <div class="l-card" id="lCard" role="dialog" aria-live="polite" aria-label="Mensagem da lanterna">
+      <div class="sky-box" id="skyBox" aria-label="Altar com as velas acesas, agrupadas por intenção">
+        <div class="altar">
+          <section class="cgroup" data-k="gratidao" aria-label="Velas de gratidão">
+            <h4>Gratidão <span class="cn">0</span></h4>
+            <div class="cgrid" data-k="gratidao"></div>
+          </section>
+          <section class="cgroup" data-k="pedido" aria-label="Velas de pedido">
+            <h4>Pedido <span class="cn">0</span></h4>
+            <div class="cgrid" data-k="pedido"></div>
+          </section>
+          <section class="cgroup" data-k="lembranca" aria-label="Velas de lembrança">
+            <h4>Lembrança <span class="cn">0</span></h4>
+            <div class="cgrid" data-k="lembranca"></div>
+          </section>
+        </div>
+        <p class="sky-empty" id="skyEmpty" hidden>O altar está vazio. Acenda a primeira vela.</p>
+        <div class="l-card" id="lCard" role="dialog" aria-live="polite" aria-label="Mensagem da vela">
           <button class="l-x" id="lCardX" aria-label="Fechar mensagem"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
           <span class="l-kind" id="lKind"></span>
           <p class="l-msg" id="lMsgOut"></p>

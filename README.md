@@ -34,8 +34,8 @@ Texto discreto no fim do rodapé: `12.480 visitas · 3 agora` (o "agora" só apa
 - **Ativar na Vercel:** Projeto → **Storage → Create Database → Upstash (Redis)** → conecte ao projeto (isso cria
   `KV_REST_API_URL` e `KV_REST_API_TOKEN`) → **Redeploy**. Sem isso a API responde 503 e o contador fica oculto.
 
-## Lanternas compartilhadas
-O céu mostra as lanternas de todos os visitantes (opcional para quem escreve).
+## Velas compartilhadas (altar)
+O altar mostra as velas de todos os visitantes, agrupadas por intenção (gratidão, pedido, lembrança); compartilhar é opcional para quem escreve. O nome "lanterns" permanece na API e no armazenamento por compatibilidade.
 - **API:** `api/lanterns.js` (GET lista, POST publica/denuncia), mesmo Redis do contador. Sem Redis, o céu segue só local.
 - **Moderação mínima** (`api/_moderate.js`): palavrões, links, e-mail/telefone/CPF, repetição; denúncia (3 ocultam);
   limite de 5 por hora por pessoa (hash de IP, 1 h) e 20 s entre envios; expiração em 7 dias; até 100 guardadas.
