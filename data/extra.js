@@ -67,7 +67,7 @@ const eatAreas = [
 const eats = [
   { id: 'do-bena', name: 'Bar e Restaurante do Bena', area: 'panaquatira', where: 'Praia de Panaquatira', food: 'Peixada e comida de praia', rating: '4,1', n: 330, price: 'acessível' },
   { id: 'cafe-da-dona', name: 'Restaurante e Café da Dona', area: 'panaquatira', where: 'Av. Panaquatira, Sítio do Apicum', food: 'Pratos caseiros típicos e torta de camarão', rating: '4,4', n: 129, price: 'barato' },
-  { id: 'cafe-da-lu', name: 'Café da Lu', area: 'panaquatira', where: 'Av. Panaquatira, 58, Moropóia', food: 'Café; confira o cardápio no local', rating: '', n: 0, price: '' },
+  { id: 'cafe-da-lu', name: 'Café da Lu', area: 'panaquatira', where: 'Av. Panaquatira, 58, Moropóia', food: 'Café da manhã, bolos e lanches', rating: '', n: 0, price: '' },
   { id: 'bar-peixe-pedra', name: 'Bar Peixe Pedra', area: 'panaquatira', where: 'Av. Panaquatira', food: 'Peixe pedra', rating: '4,2', n: 87, price: '', src: 'Restaurant Guru' },
   { id: 'ponto-x', name: 'Ponto X Bar e Restaurante', area: 'aracagi', where: 'Av. Atlântica, Araçagy', food: 'Frutos do mar e caranguejada', rating: '4,3', n: 1111, price: '' },
   { id: 'mirante', name: 'Restaurante Mirante', area: 'aracagi', where: 'R. da Oleama, Araçagi', food: 'Frutos do mar e galinha caipira, com vista para o mar', rating: '4,4', n: 659, price: '' },
