@@ -96,3 +96,12 @@
   .map-actions .btn{white-space:nowrap;justify-content:center}
   #goRoute,#copyAddr{grid-column:1/-1}
 }
+
+/* fundo: ruas e orla do centro (OpenStreetMap), em linhas suaves por trás do conteúdo */
+.map-sec::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("../img/mapa-fundo.svg") center/cover no-repeat;opacity:.38;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);mask:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%)}
+.map-sec>.wrap{position:relative;z-index:1}
+@media (max-width:760px){
+  .map-sec::after{background-size:1100px auto;background-position:42% 0;background-repeat:repeat-y;opacity:.3}
+}

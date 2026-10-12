@@ -92,3 +92,4 @@ o conteúdo diz isso em vez de inventar.
 - **Lua (hero, noite):** *Moon Phase and Libration, 2024*, NASA Scientific Visualization Studio (domínio público), via Wikimedia Commons. Script: `scripts/cut-moon.js`.
 - **Fotos da galeria:** créditos na legenda de cada foto (lightbox) e em `data/photos.js`.
 - **Vídeo "A cidade em 1989":** Sertões Gerais — Evandro Aquino, incorporado do YouTube sob demanda.
+- **Fundo da seção "Do mapa ao destino":** ruas e orla do centro desenhadas a partir de dados do [OpenStreetMap](https://www.openstreetmap.org/copyright) (© colaboradores do OpenStreetMap, licença ODbL). Script: `scripts/make-map-bg.js`.
