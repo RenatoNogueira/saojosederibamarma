@@ -5,6 +5,7 @@
     <nav aria-label="Seções" id="navLinks">
       <% nav.forEach(function(n){ %><a href="#<%= n[0] %>" data-spy="<%= n[0] %>"><%= n[1] %></a><% }) %>
     </nav>
+    <button class="nav-share" type="button" data-share aria-label="Compartilhar este site"><%- icon('share') %></button>
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </header>

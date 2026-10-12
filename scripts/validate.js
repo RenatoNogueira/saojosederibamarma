@@ -204,6 +204,39 @@ function validateHtml(ctx) {
     try { JSON.parse(m[2]); } catch (e) { err('html', `JSON inválido em #${m[1]}: ${e.message}`); }
   });
 
+  /* SEO e prévia social */
+  const metaC = (re) => { const m = html.match(re); return m ? m[1] : ''; };
+  const title = metaC(/<title>([^<]*)<\/title>/);
+  const desc = metaC(/<meta name="description" content="([^"]*)"/);
+  if (!title) err('seo', 'sem <title>');
+  else if (title.length > 65) warn('seo', `<title> com ${title.length} caracteres (ideal ≤ 65)`);
+  if (desc.length < 70 || desc.length > 170) warn('seo', `meta description com ${desc.length} caracteres (ideal 70–170)`);
+  const canonical = metaC(/<link rel="canonical" href="([^"]*)"/);
+  const og = k => metaC(new RegExp(`<meta property="${k}" content="([^"]*)"`));
+  const tw = k => metaC(new RegExp(`<meta name="${k}" content="([^"]*)"`));
+  if (!/^https:\/\//.test(canonical)) err('seo', `canonical ausente ou não absoluta: "${canonical}"`);
+  ['og:title', 'og:description', 'og:image', 'og:url', 'og:type', 'og:image:alt'].forEach(k => { if (!og(k)) err('seo', `falta <meta property="${k}">`); });
+  if (og('og:url') !== canonical) err('seo', `og:url (${og('og:url')}) diferente do canonical (${canonical})`);
+  if (!/^https:\/\//.test(og('og:image'))) err('seo', `og:image precisa ser URL absoluta https: "${og('og:image')}"`);
+  if (!tw('twitter:card')) err('seo', 'falta twitter:card');
+  if (tw('twitter:image') !== og('og:image')) warn('seo', 'twitter:image diferente de og:image');
+  const imgPath = og('og:image').replace(/^https?:\/\/[^/]+/, '');
+  if (imgPath && !exists(path.join(ROOT, 'dist', imgPath))) err('seo', `imagem de prévia não existe em dist: ${imgPath}`);
+  if (!exists(path.join(ROOT, 'dist/robots.txt'))) warn('seo', 'sem robots.txt');
+  if (!exists(path.join(ROOT, 'dist/sitemap.xml'))) warn('seo', 'sem sitemap.xml');
+  const ld = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (!ld) warn('seo', 'sem dados estruturados (JSON-LD)');
+  else {
+    try {
+      const j = JSON.parse(ld[1]);
+      if (j['@context'] !== 'https://schema.org') err('seo', 'JSON-LD sem @context schema.org');
+      const types = (j['@graph'] || [j]).map(x => x['@type']);
+      ['WebSite', 'WebPage'].forEach(t => { if (!types.includes(t)) warn('seo', `JSON-LD sem @type ${t}`); });
+    } catch (e) { err('seo', `JSON-LD inválido: ${e.message}`); }
+  }
+  ['shareDialog', 'shGrid', 'shCopy', 'shField'].forEach(id => { if (!idSet.has(id)) err('compartilhar', `elemento #${id} ausente do HTML`); });
+  if (!/data-share/.test(html)) err('compartilhar', 'nenhum botão com data-share');
+
   const kb = Buffer.byteLength(html) / 1024;
   if (kb > 400) warn('html', `index.html grande: ${Math.round(kb)} KB`);
 }
@@ -288,7 +321,7 @@ function validateProject() {
     const d = path.join(PUB, sub);
     if (!exists(d)) return;
     fs.readdirSync(d).forEach(f => {
-      if (/\.(jpe?g|png)$/i.test(f) && f !== 'og.jpg') warn('imagens', `public/${sub}/${f} não é WebP: coloque o original em assets-src/${sub}/ e rode npm run images`);
+      if (/\.(jpe?g|png)$/i.test(f) && f !== 'og.jpg' && !/^icon-\d+\.png$/.test(f)) warn('imagens', `public/${sub}/${f} não é WebP: coloque o original em assets-src/${sub}/ e rode npm run images`);
       if (/\.webp$/i.test(f)) {
         const base = f.replace(/\.webp$/i, '');
         const src = path.join(ROOT, 'assets-src', sub);

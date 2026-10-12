@@ -1,0 +1,33 @@
+<dialog class="share" id="shareDialog" aria-labelledby="shareTitle">
+  <div class="sh-in">
+    <button class="sh-close" id="shareClose" aria-label="Fechar"><%- icon('close') %></button>
+    <h3 id="shareTitle">Compartilhar</h3>
+
+    <div class="sh-preview">
+      <img src="img/og.jpg" alt="" width="1200" height="630" decoding="async">
+      <div>
+        <strong id="shTitle"></strong>
+        <span id="shUrl"></span>
+      </div>
+    </div>
+
+    <label class="sh-section" id="shSectionWrap" hidden>
+      <input type="checkbox" id="shSection" checked>
+      <span>Link direto para a seção <b id="shSectionName"></b></span>
+    </label>
+
+    <div class="sh-grid" id="shGrid">
+      <a class="sh-btn" data-net="whatsapp" target="_blank" rel="noopener noreferrer"><span class="sh-ic wa"><%- icon('chat') %></span>WhatsApp</a>
+      <a class="sh-btn" data-net="facebook" target="_blank" rel="noopener noreferrer"><span class="sh-ic fb">f</span>Facebook</a>
+      <a class="sh-btn" data-net="x" target="_blank" rel="noopener noreferrer"><span class="sh-ic xx">X</span>X (Twitter)</a>
+      <a class="sh-btn" data-net="telegram" target="_blank" rel="noopener noreferrer"><span class="sh-ic tg"><%- icon('plane') %></span>Telegram</a>
+      <a class="sh-btn" data-net="email"><span class="sh-ic ml"><%- icon('mail') %></span>E-mail</a>
+      <button class="sh-btn" id="shCopy" type="button"><span class="sh-ic cp"><%- icon('link') %></span><span id="shCopyLbl">Copiar link</span></button>
+    </div>
+
+    <div class="sh-field">
+      <input id="shField" type="text" readonly aria-label="Link para compartilhar">
+    </div>
+    <p class="sh-msg" id="shMsg" role="status" aria-live="polite"></p>
+  </div>
+</dialog>

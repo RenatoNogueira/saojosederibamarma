@@ -39,4 +39,13 @@ const W = 1200, H = 630;
     .jpeg({ quality: 84, mozjpeg: true })
     .toFile(path.join(ROOT, 'public/img/og.jpg'));
   console.log('public/img/og.jpg gerada (1200×630)');
+
+  const icon = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1f55"/><stop offset="1" stop-color="#e2503f"/></linearGradient></defs>
+    <rect width="180" height="180" fill="url(#g)"/>
+    <circle cx="90" cy="84" r="40" fill="#ffd47a"/>
+    <path d="M0 130 Q45 112 90 130 T180 130 V180 H0Z" fill="#06143a"/>
+  </svg>`);
+  await sharp(icon).png().toFile(path.join(ROOT, 'public/img/icon-180.png'));
+  console.log('public/img/icon-180.png gerado (180×180)');
 })().catch(e => { console.error(e.message); process.exit(1); });

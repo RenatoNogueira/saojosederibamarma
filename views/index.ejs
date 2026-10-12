@@ -3,23 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>São José de Ribamar — Fé, mar e história</title>
-  <meta name="description" content="Explore São José de Ribamar, no Maranhão: história, festejo do padroeiro, praias, cultura e um roteiro para conhecer a cidade.">
+  <title><%= seo.title %></title>
+  <meta name="description" content="<%= seo.description %>">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="<%= seo.url %>">
   <meta name="theme-color" content="#06143a">
+  <meta name="application-name" content="São José de Ribamar">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2306143a'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ffc861'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="img/icon-180.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="São José de Ribamar — Fé, mar e história">
-  <meta property="og:description" content="História, festejo do padroeiro, sabores, praias, calendário e galeria de fotos de São José de Ribamar, no Maranhão.">
-  <link rel="canonical" href="<%= siteUrl %>/">
-  <meta property="og:url" content="<%= siteUrl %>/">
   <meta property="og:site_name" content="São José de Ribamar">
-  <meta property="og:image" content="<%= siteUrl %>/img/og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Monumento a São José e igreja-santuário sobre céu do amanhecer, com o título Ribamar">
-  <meta name="twitter:image" content="<%= siteUrl %>/img/og.jpg">
+  <meta property="og:title" content="<%= seo.shortTitle %>">
+  <meta property="og:description" content="<%= seo.description %>">
+  <meta property="og:url" content="<%= seo.url %>">
+  <meta property="og:image" content="<%= seo.image %>">
+  <meta property="og:image:secure_url" content="<%= seo.image %>">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="<%= seo.imageWidth %>">
+  <meta property="og:image:height" content="<%= seo.imageHeight %>">
+  <meta property="og:image:alt" content="<%= seo.imageAlt %>">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= seo.shortTitle %>">
+  <meta name="twitter:description" content="<%= seo.description %>">
+  <meta name="twitter:image" content="<%= seo.image %>">
+  <meta name="twitter:image:alt" content="<%= seo.imageAlt %>">
+  <script type="application/ld+json"><%- JSON.stringify(seo.jsonld).replace(/</g, '\\u003c') %></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,6 +43,7 @@
   <link rel="stylesheet" href="css/extra.css">
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="stylesheet" href="css/share.css">
   <link rel="stylesheet" href="css/a11y.css">
 </head>
 <body id="top">
@@ -57,6 +67,7 @@
   <%- include('partials/footer') %>
   <%- include('partials/modal') %>
   <%- include('partials/lightbox') %>
+  <%- include('partials/share') %>
 
   <script type="application/json" id="site-data"><%- JSON.stringify(clientData).replace(/</g, '\\u003c') %></script>
   <script src="js/scrolllock.js"></script>
@@ -64,6 +75,7 @@
   <script src="js/app.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/extra.js"></script>
+  <script src="js/share.js" defer></script>
   <script src="js/visitors.js" defer></script>
 </body>
 </html>

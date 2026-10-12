@@ -1,0 +1,47 @@
+/* ===== Compartilhar ===== */
+.nav-share{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);
+  color:var(--cream);cursor:pointer;transition:.3s var(--ease);margin-left:auto;margin-right:10px;flex:none}
+.nav-share:hover{background:var(--gold);color:#06143a;border-color:var(--gold);transform:translateY(-2px)}
+.nav-share:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.nav-share .ic{width:19px;height:19px}
+@media (min-width:1181px){.nav-share{margin-right:0}}
+.foot-share{margin-top:16px}
+
+.share{border:0;padding:0;background:transparent;color:var(--cream);width:min(460px,94vw);max-height:92vh;margin:auto;overflow:visible}
+.share::backdrop{background:radial-gradient(ellipse at 50% 40%,rgba(10,28,82,.78),rgba(2,6,24,.92));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.share[open]{animation:m-open .45s var(--ease)}
+.share[open]::backdrop{animation:m-fade .35s}
+.sh-in{position:relative;border-radius:26px;padding:26px 24px 22px;max-height:92vh;overflow-y:auto;
+  background:linear-gradient(165deg,#10296f,#06143a);border:1px solid rgba(255,214,140,.4);box-shadow:0 40px 100px rgba(0,3,20,.7)}
+.sh-in h3{font-family:'Fraunces',serif;font-weight:800;font-size:26px;margin:0 44px 16px 0}
+.sh-close{position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.3s var(--ease)}
+.sh-close:hover{background:var(--coral-strong,#c4402e);border-color:transparent;transform:rotate(90deg)}
+.sh-close:focus-visible,.sh-btn:focus-visible,.sh-field input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.sh-close .ic{width:18px;height:18px}
+
+.sh-preview{display:grid;grid-template-columns:116px 1fr;gap:12px;align-items:center;padding:10px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}
+.sh-preview img{width:116px;height:61px;object-fit:cover;border-radius:10px;display:block}
+.sh-preview div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.sh-preview strong{font-size:14px;line-height:1.25}
+.sh-preview span{font-size:12px;color:#9fb4ea;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.sh-section{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13.5px;color:#dbe6ff;cursor:pointer}
+.sh-section input{width:18px;height:18px;accent-color:var(--gold);flex:none}
+.sh-section[hidden]{display:none}
+.sh-section b{color:var(--gold)}
+
+.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.sh-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);
+  color:#fff;font:inherit;font-size:12.5px;text-decoration:none;cursor:pointer;transition:transform .3s var(--ease),background .3s,border-color .3s;text-align:center}
+.sh-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.12);border-color:var(--gold)}
+.sh-ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px;font-family:'Fraunces',serif}
+.sh-ic .ic{width:22px;height:22px}
+.sh-ic.wa{background:#1f9d55}.sh-ic.fb{background:#1b6fe0}.sh-ic.xx{background:#111}.sh-ic.tg{background:#229ed9}.sh-ic.ml{background:#c4402e}.sh-ic.cp{background:#6b5bd2}
+
+.sh-field{margin-top:14px}
+.sh-field input{width:100%;font:inherit;font-size:13px;color:#dbe6ff;background:rgba(2,8,30,.55);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:11px 12px}
+.sh-msg{min-height:20px;margin:8px 2px 0;font-size:12.5px;color:#7be0a6}
+@media (max-width:400px){.sh-grid{grid-template-columns:repeat(2,1fr)}.sh-preview{grid-template-columns:90px 1fr}.sh-preview img{width:90px;height:47px}}
+@media (prefers-reduced-motion:reduce){.sh-btn,.sh-close,.nav-share{transition:none}}
+.sh-ic.fb,.sh-ic.xx{font-family:Arial,Helvetica,sans-serif;font-weight:700}
+.sh-ic.fb{font-size:24px;line-height:1}
