@@ -186,3 +186,16 @@
 .lf-from{border-top:0}
 .lf-preview{background:radial-gradient(ellipse at 50% 70%,rgba(var(--kg),.18),transparent 68%);border-radius:0}
 .lf-preview{-webkit-mask:radial-gradient(ellipse at 50% 60%,#000 35%,transparent 72%);mask:radial-gradient(ellipse at 50% 60%,#000 35%,transparent 72%)}
+
+/* o céu das lanternas ocupa a seção inteira: as lanternas flutuam por todo o container, a onda fica na borda de baixo */
+.sec.lanterns>.wrap{position:static;z-index:auto}
+.sec.lanterns .sec-head,.sec.lanterns .lantern-form,.sec.lanterns .sky-meta{position:relative;z-index:2}
+.sec.lanterns .sky-wrap{display:contents}
+.sec.lanterns .sky-box{position:absolute;inset:0;z-index:1;height:auto;min-height:0;flex:none;border-radius:0;border:0;-webkit-mask:none;mask:none}
+.sec.lanterns .sky-box::before{top:7%}
+.sec.lanterns .sky-empty{inset:auto 0 110px 0;place-items:end center;text-align:center;padding:0 20px}
+/* o que está por cima não bloqueia o toque nas lanternas; só os controles respondem */
+.sec.lanterns .sec-head,.sec.lanterns .lantern-form,.sec.lanterns .sky-meta{pointer-events:none}
+.sec.lanterns :is(button,textarea,input,label,a,.lf-box,.lf-share){pointer-events:auto}
+.sec.lanterns .sky-meta{margin-bottom:12px}
+.sec.lanterns .sky-meta{align-self:start}
