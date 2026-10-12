@@ -159,3 +159,18 @@
   -webkit-mask:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);mask:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%)}
 .sec.lanterns>.wrap{position:relative;z-index:1}
 @media (max-width:760px){.sec.lanterns::after{background-size:900px 600px;opacity:.6}}
+
+/* cartões que se misturam ao céu da seção: sem borda dura, fundo translúcido e bordas que se dissolvem */
+.sky-box{border-color:transparent;border-radius:34px;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 28% 42%,rgba(255,255,255,.7),transparent),
+    radial-gradient(1.5px 1.5px at 44% 12%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 63% 30%,rgba(255,255,255,.7),transparent),
+    radial-gradient(1.5px 1.5px at 78% 16%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 90% 38%,rgba(255,255,255,.7),transparent),
+    radial-gradient(ellipse at 50% 115%,rgba(255,140,70,.4),transparent 62%),
+    linear-gradient(180deg,rgba(2,7,28,0) 0%,rgba(10,31,85,.45) 62%,rgba(27,63,156,.6) 100%);
+  -webkit-mask:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 12%,#000 94%,transparent 100%);
+  -webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent 0%,#000 9%,#000 91%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 12%,#000 94%,transparent 100%);
+  mask-composite:intersect}
+.lantern-form{border-color:rgba(255,214,140,.12);background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+  box-shadow:0 0 70px rgba(var(--kg),.06) inset}
+.lantern-form:focus-within{border-color:rgba(var(--kg),.45);box-shadow:0 0 80px rgba(var(--kg),.14) inset}
