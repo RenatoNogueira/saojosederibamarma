@@ -93,3 +93,7 @@ o conteúdo diz isso em vez de inventar.
 - **Fotos da galeria:** créditos na legenda de cada foto (lightbox) e em `data/photos.js`.
 - **Vídeo "A cidade em 1989":** Sertões Gerais — Evandro Aquino, incorporado do YouTube sob demanda.
 - **Fundo da seção "Do mapa ao destino":** ruas e orla do centro desenhadas a partir de dados do [OpenStreetMap](https://www.openstreetmap.org/copyright) (© colaboradores do OpenStreetMap, licença ODbL). Script: `scripts/make-map-bg.js`.
+
+## Compactação no build
+
+`npm run build` gera `dist/` com HTML, CSS e JS compactados (esbuild + limpeza de espaços e comentários do HTML). O código-fonte em `public/`, `views/` e o servidor de desenvolvimento (`npm run dev`) continuam legíveis. Se o `esbuild` não estiver instalado, o build segue sem compactar. Lógica em `lib/minify.js`.

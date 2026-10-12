@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { render } = require('./lib/render');
+const { minifyHtml, minifyAssets, hasEsbuild } = require('./lib/minify');
 
 const DIST = path.join(__dirname, 'dist');
 const PUBLIC = path.join(__dirname, 'public');
@@ -12,9 +13,13 @@ const PUBLIC = path.join(__dirname, 'public');
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
   fs.cpSync(PUBLIC, DIST, { recursive: true });
-  fs.writeFileSync(path.join(DIST, 'index.html'), html);
-  const kb = Math.round(Buffer.byteLength(html) / 1024);
-  console.log(`Site gerado em dist/index.html (${kb} KB)`);
+  const small = minifyHtml(html);
+  fs.writeFileSync(path.join(DIST, 'index.html'), small);
+  const st = minifyAssets(DIST);
+  const kb = n => Math.round(n / 1024);
+  console.log(`Site gerado em dist/index.html (${kb(Buffer.byteLength(html))} KB → ${kb(Buffer.byteLength(small))} KB)`);
+  if (hasEsbuild()) console.log(`CSS/JS compactados: ${st.files} arquivos, ${kb(st.before)} KB → ${kb(st.after)} KB`);
+  else console.log('esbuild não encontrado: CSS/JS não foram compactados');
 })().catch(err => {
   console.error('Falha no build:', err.message);
   process.exit(1);
