@@ -152,3 +152,10 @@
   .lant-grid .sky-wrap{margin-top:0;display:flex;flex-direction:column}
   .lant-grid .sky-box{flex:1;height:auto;min-height:560px}
 }
+
+/* céu estrelado discreto: estrelas pequenas e esparsas, esmaecidas no topo e na base */
+.sec.lanterns::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("../img/estrelas.svg") center top/1200px 800px repeat;opacity:.75;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%);mask:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%)}
+.sec.lanterns>.wrap{position:relative;z-index:1}
+@media (max-width:760px){.sec.lanterns::after{background-size:900px 600px;opacity:.6}}
