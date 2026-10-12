@@ -30,7 +30,12 @@
     </div>
     <p class="area-note reveal" id="eatNote"><%= eatAreas[0].note %></p>
 
-    <div class="eat-grid" id="eatGrid">
+    <div class="eat-nav reveal">
+      <span class="eat-count" id="eatCount" aria-live="polite"></span>
+      <button type="button" class="eat-arrow" id="eatPrev" aria-label="Anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" id="eatNext" aria-label="Próximos"><%- icon('arrow') %></button>
+    </div>
+    <div class="eat-grid" id="eatGrid" tabindex="0" aria-label="Lista de restaurantes (deslize para o lado)">
       <% eats.forEach(function(e, i){ %>
       <article class="eat reveal" data-area="<%= e.area %>" style="--d:<%= i %>">
         <div class="eat-top">
