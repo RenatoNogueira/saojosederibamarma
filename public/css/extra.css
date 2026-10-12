@@ -162,3 +162,8 @@
   .metrics .metric{scroll-snap-align:start}
 }
 @media (min-width:561px){.met-nav{display:none}}
+
+/* cartões cortados pela borda dos carrosséis: desfoque + leve transparência */
+.js :is([data-rail],#eatGrid,.tl-track)>*{transition:transform .4s var(--ease),box-shadow .3s,border-color .3s,opacity .8s var(--ease),filter .4s ease;transition-delay:calc(var(--d,0)*70ms)}
+.js :is([data-rail],#eatGrid,.tl-track)>.cut{filter:blur(3.5px);opacity:.55}
+@media (prefers-reduced-motion:reduce){.js :is([data-rail],#eatGrid,.tl-track)>*{transition:none}}

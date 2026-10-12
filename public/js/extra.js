@@ -5,6 +5,14 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
 
+  /* cartões cortados pela borda do carrossel ganham blur (classe .cut) */
+  function edgeBlur(root, items) {
+    if (!('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('cut', e.intersectionRatio < .9)),
+      { root, rootMargin: '0px 6px', threshold: [0, .5, .9, 1] });
+    items.forEach(i => io.observe(i));
+  }
+
   /* carrossel genérico: setas (.rail-nav[data-for]), teclado e arrastar com o mouse */
   function carousel(grid, extra) {
     const nav = document.querySelector('.eat-nav[data-for="' + grid.id + '"]');
@@ -37,9 +45,11 @@
     window.addEventListener('pointerup', () => { down = null; grid.classList.remove('drag'); });
     grid.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
     update();
+    edgeBlur(grid, [...grid.children]);
     return update;
   }
   $$('[data-rail]').forEach(g => carousel(g));
+  $$('.tl-rail').forEach(r => edgeBlur(r, $$('.tl-card', r)));
 
   /* onde comer: filtro por região */
   const chips = $('#eatChips');
