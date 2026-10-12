@@ -17,9 +17,32 @@
     setTimeout(() => { hero.classList.add('ready'); document.body.classList.add('hero-ready'); }, 60);
   });
 
-  /* estrelas (apenas cintilam; somem com o amanhecer) */
+  /* dia e noite: automático pela hora local (6h–18h = dia); o visitante pode alternar (vale nesta visita) */
+  const btn = document.getElementById('skyToggle');
+  const KEY = 'ribamar:sky';
+  const auto = () => { const hh = new Date().getHours(); return hh >= 6 && hh < 18 ? 'day' : 'night'; };
+  const valid = v => (v === 'day' || v === 'night') ? v : null;
+  let manual = valid(new URLSearchParams(location.search).get('sky'));
+  if (!manual) { try { manual = valid(sessionStorage.getItem(KEY)); } catch { /* sem storage */ } }
+  function applySky(mode) {
+    hero.dataset.time = mode;
+    document.documentElement.dataset.sky = mode;
+    if (btn) {
+      btn.setAttribute('aria-label', mode === 'day' ? 'Mudar o céu para a noite' : 'Mudar o céu para o dia');
+      btn.title = mode === 'day' ? 'Ver a noite' : 'Ver o dia';
+    }
+  }
+  applySky(manual || auto());
+  if (btn) btn.addEventListener('click', () => {
+    manual = hero.dataset.time === 'day' ? 'night' : 'day';
+    try { sessionStorage.setItem(KEY, manual); } catch { /* sem storage */ }
+    applySky(manual);
+  });
+  setInterval(() => { if (!manual) applySky(auto()); }, 5 * 60 * 1000);   /* página aberta atravessando o pôr do sol */
+
+  /* estrelas (cintilam à noite; esmaecem de dia) */
   const sc = document.getElementById('stars'), sx = sc.getContext('2d');
-  let stars = [], W = 0, H = 0;
+  let stars = [], W = 0, H = 0, starA = 1;
   function initStars() {
     sc.width = hero.clientWidth * DPR; sc.height = hero.clientHeight * DPR; W = sc.width; H = sc.height;
     stars = Array.from({ length: Math.round(hero.clientWidth / 6) }, () => ({
@@ -55,7 +78,8 @@
     for (const [el, d] of targets) el.style.translate = `${-px * d}px ${-py * d * .5}px`;
 
     sx.clearRect(0, 0, W, H);
-    const fade = Math.max(0, 1 - Math.max(0, secs - 2) / 14);
+    starA += ((hero.dataset.time === 'night' ? 1 : 0) - starA) * .04;
+    const fade = starA;
     sx.fillStyle = '#fff';
     for (const s of stars) {
       sx.globalAlpha = (.35 + .65 * Math.abs(Math.sin(secs * s.s + s.p))) * fade;

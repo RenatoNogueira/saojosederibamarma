@@ -14,6 +14,9 @@ test('o site renderiza com todas as seções e sem resíduos de template', async
   assert.doesNotMatch(html, /<%|%>/);
   const sections = ['numeros', 'historia', 'lugares', 'mapa', 'sabores', 'festejo', 'calendario', 'cultura', 'galeria', 'roteiro', 'quiz', 'luzes'];
   sections.forEach(id => assert.match(html, new RegExp(`id="${id}"`), `seção #${id}`));
+  assert.match(html, /id="skyToggle"/, 'botão dia/noite');
+  assert.match(html, /class="moon"/, 'lua');
+  assert.equal((html.match(/class="puff p\d"/g) || []).length, 5, 'nuvens do dia');
 });
 
 test('dados e HTML passam no validador (sem erros)', () => {

@@ -128,3 +128,94 @@
 @media (prefers-reduced-motion:reduce){
   .hero *,.hero-ready .site-nav{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
 }
+
+/* ===== Dia e noite =====
+   O hero lê data-time="day|night" (hora local do visitante, ou a escolha dele). Base = noite. */
+.hero{--sunW:min(46vh,40vw);--moonW:min(30vh,26vw)}
+
+/* céu: duas camadas que se cruzam */
+.sky-day{background:linear-gradient(180deg,#2b7fe0 0%,#5aa6f2 38%,#9ccdf8 68%,#d6ecff 100%);opacity:0;transition:opacity 1.4s ease}
+.hero[data-time="day"] .sky-day{opacity:1}
+.hero .sky-night{transition:opacity 1.4s ease}
+.hero[data-time="day"] .sky-night{opacity:0}
+
+/* brilho do horizonte */
+.hero.ready[data-time="night"] .dawn{animation:none;opacity:0;transition:opacity 1s}
+.hero[data-time="day"] .dawn{animation:none!important;opacity:1;transition:opacity 1s;
+  background:radial-gradient(ellipse 90% 45% at 50% 100%,rgba(255,244,205,.85),rgba(255,244,205,0) 70%)}
+
+/* estrelas e lanternas só à noite */
+.hero[data-time="day"] #stars,.hero[data-time="day"] #lights{animation:none!important;opacity:0;transition:opacity 1s}
+.hero[data-time="night"] #stars,.hero[data-time="night"] #lights{transition:opacity 1.4s}
+
+/* nuvens do dia */
+.puffs{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.4s ease}
+.hero[data-time="day"] .puffs{opacity:1}
+.puff{position:absolute;left:-30%;display:block;width:var(--w);height:calc(var(--w)*.28);border-radius:999px;background:#fff;opacity:var(--o,.95);
+  filter:drop-shadow(0 12px 18px rgba(30,70,140,.16));animation:drift var(--d) linear infinite;animation-delay:var(--dl)}
+.puff::before,.puff::after{content:"";position:absolute;border-radius:50%;background:#fff}
+.puff::before{width:42%;height:150%;left:14%;bottom:30%}
+.puff::after{width:34%;height:120%;left:46%;bottom:30%}
+.puff.p1{top:13%;--w:300px;--d:110s;--dl:-30s}
+.puff.p2{top:27%;--w:220px;--d:150s;--dl:-95s;--o:.9}
+.puff.p3{top:7%;--w:180px;--d:130s;--dl:-10s;--o:.8}
+.puff.p4{top:37%;--w:340px;--d:190s;--dl:-140s;--o:.7}
+.puff.p5{top:21%;--w:140px;--d:100s;--dl:-60s;--o:.85}
+
+/* sol (dia) e lua (noite) trocam de lugar */
+.sun-wrap{transition:opacity 1.2s ease,transform 1.4s var(--ease)}
+.hero[data-time="night"] .sun-wrap{opacity:0;transform:translateY(32vh)}
+.hero[data-time="day"] .sun{background:radial-gradient(circle,#fffdf0 0%,#fff2b0 38%,#ffd54f 72%,#ffb52e 100%);
+  box-shadow:0 0 90px 30px rgba(255,236,140,.65),0 0 230px 90px rgba(255,255,255,.4)}
+.hero[data-time="day"] .sun::before{background:repeating-conic-gradient(rgba(255,255,255,.3) 0 4deg,transparent 4deg 12deg)}
+
+.moon-wrap{position:absolute;pointer-events:none;width:var(--moonW);aspect-ratio:1;
+  right:calc(5vw + 6vh + (var(--sunW) - var(--moonW)) / 2);bottom:calc(18vh + (var(--sunW) - var(--moonW)) / 2);
+  opacity:0;transform:translateY(32vh);transition:opacity 1.2s ease,transform 1.4s var(--ease)}
+.hero[data-time="night"] .moon-wrap{opacity:1;transform:none}
+.moon{position:absolute;inset:0;border-radius:50%;transform:translateY(40vh) scale(.85);opacity:0;
+  background:
+    radial-gradient(circle at 30% 36%,rgba(140,145,130,.38) 0 7%,transparent 8%),
+    radial-gradient(circle at 63% 27%,rgba(140,145,130,.32) 0 5%,transparent 6%),
+    radial-gradient(circle at 56% 61%,rgba(140,145,130,.36) 0 10%,transparent 11%),
+    radial-gradient(circle at 27% 68%,rgba(140,145,130,.30) 0 6%,transparent 7%),
+    radial-gradient(circle at 76% 55%,rgba(140,145,130,.26) 0 4%,transparent 5%),
+    radial-gradient(circle at 34% 30%,#fffef4 0%,#efecd0 55%,#c9c6a6 100%);
+  box-shadow:0 0 50px 8px rgba(225,235,255,.55),0 0 170px 60px rgba(110,140,255,.22),inset -16px -12px 30px rgba(120,120,100,.28)}
+.hero.ready[data-time="night"] .moon{animation:sunrise 2.4s .5s var(--ease) forwards}
+
+/* texto legível sobre o céu claro */
+.kicker,.tagline{transition:color .8s}
+.hero[data-time="day"] .kicker{color:#0b1a44}
+.hero[data-time="day"] .kicker::before,.hero[data-time="day"] .kicker::after{background:linear-gradient(90deg,transparent,#0b1a44)}
+.hero[data-time="day"] .big span{background:linear-gradient(180deg,#0b1a44 8%,#1448b8 68%,#2a6fe0 100%);-webkit-background-clip:text;background-clip:text}
+.hero[data-time="day"] .tagline{color:#0b1a44;text-shadow:0 1px 12px rgba(255,255,255,.55)}
+
+/* menu fixo legível sobre o céu claro (antes de rolar) */
+html[data-sky="day"] .site-nav:not(.solid)::before{content:"";position:absolute;inset:0 0 -26px 0;pointer-events:none;z-index:-1;
+  background:linear-gradient(180deg,rgba(6,20,58,.62),rgba(6,20,58,0))}
+
+/* botão dia/noite */
+.sky-toggle{position:absolute;right:4vw;top:84px;z-index:9;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.35);background:rgba(6,20,58,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;cursor:pointer;
+  opacity:0;transition:background .3s,color .3s,transform .3s var(--ease),border-color .3s}
+.hero.ready .sky-toggle{animation:up .8s 3.2s var(--ease) forwards}
+.sky-toggle:hover{background:var(--gold);color:#06143a;border-color:var(--gold);transform:rotate(-12deg)}
+.sky-toggle:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.sky-ic{display:none}
+.sky-ic .ic{width:20px;height:20px}
+.hero[data-time="day"] .sky-ic.i-moon{display:block}       /* de dia, o botão oferece a noite */
+.hero[data-time="night"] .sky-ic.i-sun{display:block}      /* de noite, oferece o dia */
+@media (max-width:760px){.sky-toggle{right:16px;top:76px}}
+@media (prefers-reduced-motion:reduce){.puff{animation:none}.sky-day,.sky-night,.puffs,.moon-wrap,.sun-wrap{transition:none}}
+
+/* lua em área livre do céu (o sol continua atrás do monumento, com os raios visíveis) */
+.moon-wrap{right:auto;bottom:auto;left:37vw;top:47vh;width:min(24vh,20vw)}
+@media (max-width:760px){.moon-wrap{left:9vw;top:40vh;width:24vw}}
+@media (max-width:760px){
+  .puff.p1{top:19%;--w:150px}
+  .puff.p2{top:31%;--w:120px}
+  .puff.p3{top:12%;--w:96px}
+  .puff.p4{top:40%;--w:170px}
+  .puff.p5{top:25%;--w:84px}
+}
