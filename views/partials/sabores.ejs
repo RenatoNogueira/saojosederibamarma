@@ -7,7 +7,12 @@
     </header>
 
     <h3 class="sub reveal">O que provar</h3>
-    <div class="dish-grid">
+        <div class="eat-nav" data-for="dishGrid">
+      
+      <button type="button" class="eat-arrow" data-dir="-1" aria-label="Pratos anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="1" aria-label="Pratos seguintes"><%- icon('arrow') %></button>
+    </div>
+    <div class="dish-grid" id="dishGrid" data-rail tabindex="0" aria-label="Pratos típicos (deslize para o lado)">
       <% dishes.forEach(function(d, i){ %>
       <button class="dish reveal" data-open="dish:<%= d.id %>" style="--ac:<%= d.ac %>;--d:<%= i %>">
         <span class="dish-ic"><%- icon(d.icon) %></span>
@@ -30,10 +35,10 @@
     </div>
     <p class="area-note reveal" id="eatNote"><%= eatAreas[0].note %></p>
 
-    <div class="eat-nav reveal">
+    <div class="eat-nav" data-for="eatGrid">
       <span class="eat-count" id="eatCount" aria-live="polite"></span>
-      <button type="button" class="eat-arrow" id="eatPrev" aria-label="Anteriores"><%- icon('arrow') %></button>
-      <button type="button" class="eat-arrow" id="eatNext" aria-label="Próximos"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="-1" aria-label="Lugares anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="1" aria-label="Lugares seguintes"><%- icon('arrow') %></button>
     </div>
     <div class="eat-grid" id="eatGrid" tabindex="0" aria-label="Lista de restaurantes (deslize para o lado)">
       <% eats.forEach(function(e, i){ %>
@@ -56,7 +61,12 @@
       há vários endereços listados de forma imprecisa pelas fontes, então confira no aplicativo de mapa.</p>
 
     <h3 class="sub reveal" id="ficar">Onde ficar</h3>
-    <div class="stay-grid">
+        <div class="eat-nav" data-for="stayGrid">
+      
+      <button type="button" class="eat-arrow" data-dir="-1" aria-label="Hospedagens anteriores"><%- icon('arrow') %></button>
+      <button type="button" class="eat-arrow" data-dir="1" aria-label="Hospedagens seguintes"><%- icon('arrow') %></button>
+    </div>
+    <div class="stay-grid" id="stayGrid" data-rail tabindex="0" aria-label="Onde ficar (deslize para o lado)">
       <% stays.forEach(function(s, i){ %>
       <button class="stay reveal" data-open="stay:<%= s.id %>" style="--ac:<%= s.ac %>;--d:<%= i %>">
         <span class="stay-ic"><%- icon(s.icon) %></span>
