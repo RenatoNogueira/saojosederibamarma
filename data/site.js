@@ -129,27 +129,24 @@ const places = [
 
 /* ---------- festejo ---------- */
 const festejo = {
-  year: 2025,
-  theme: 'São José, peregrino de esperança, farol de caridade',
+  year: 2026,
+  theme: 'Santuário: Casa da Paz, Morada da Caridade',
   month: 'Setembro',
-  startsOn: 1, // setembro de 2025 começa numa segunda
+  startsOn: 2, // setembro de 2026 começa numa terça
   days: 30,
-  span: [1, 28],
+  span: [1, 27],
   events: [
-    { id: 'luz', day: 19, name: 'Romaria da Luz', time: 'Noite · missa às 19h',
-      desc: 'Procissão luminosa: milhares de devotos caminham com velas pelo centro e voltam ao Santuário para a missa. Dia estadual e municipal do santo.',
-      stops: ['Santuário', 'Av. Gonçalves Dias', 'Praça do Cruzeiro', 'Santuário'] },
-    { id: 'caminho', day: 20, name: 'Caminho de São José de Ribamar', time: 'Peregrinação',
-      desc: 'A grande romaria que nasceu do acompanhamento das imagens em 2001. Sai da Praça da Matriz da Cohab e segue até o Santuário, com momentos de oração diante das imagens.',
-      stops: ['Praça da Matriz (Cohab)', 'Imagens do Caminho', 'Santuário'] },
-    { id: 'maritima', day: 27, name: 'Romaria Marítima', time: 'Procissão no mar',
-      desc: 'A procissão sai do Santuário, passa pelos portos do Vieira e do Barbosa — onde vive a pesca artesanal da cidade — e retorna ao ponto de partida.',
-      stops: ['Santuário', 'Porto do Vieira', 'Porto do Barbosa', 'Santuário'] },
-    { id: 'moto', day: null, name: 'Procissão sobre duas rodas', time: 'Romaria de motociclistas · data varia',
-      desc: 'Nascida da devoção de um motociclista que recebeu uma graça após um acidente na estrada do Araçagi, tornou-se um dos pontos altos do festejo.',
-      stops: ['Concentração', 'Percurso urbano', 'Santuário'] }
+    { id: 'alvorada', day: 1, name: 'Romaria da Alvorada', time: 'Abertura · 5h',
+      desc: 'A abertura do festejo, ao amanhecer: concentração na Paróquia Sagrado Coração de Jesus, no Moropóia, com bênção de envio.',
+      stops: ['Paróquia Sagrado Coração de Jesus (Moropóia)', 'Bênção de envio'] },
+    { id: 'caminho', day: 19, name: 'Caminho de São José de Ribamar', time: 'Dia do padroeiro · 19h30',
+      desc: 'A grande romaria, que nasceu do acompanhamento das imagens em 2001, sai da Cohab em direção ao Santuário na noite do dia do padroeiro. No Santuário, as missas do dia 19 são às 6h, 8h30, 11h, 15h, 17h, 19h30, 22h e à meia-noite.',
+      stops: ['Cohab', 'Santuário'] },
+    { id: 'encerramento', day: 27, name: 'Encerramento do festejo', time: 'Procissão · 16h30',
+      desc: 'Missas às 6h, 8h30, 11h, 13h e 15h. Às 16h30, a procissão de encerramento, seguida de bênção de envio; às 18h30, a missa solene; às 20h30, o show de encerramento.',
+      stops: ['Procissão (16h30)', 'Bênção de envio', 'Missa solene (18h30)', 'Show de encerramento (20h30)'] }
   ],
-  note: 'Datas e percursos mudam a cada ano. Confira a programação oficial do Santuário.'
+  note: 'Novenário de 18 a 26, com missas diárias. De 1º a 17: segunda a sábado às 11h, 15h, 17h e 19h; domingos às 6h, 8h30, 11h, 15h, 17h e 19h. Programação do Imirante; confirme com o Santuário.'
 };
 
 /* ---------- cultura viva ---------- */
@@ -197,6 +194,7 @@ const sources = [
   { name: 'IBGE — Cidades: São José de Ribamar', url: 'https://www.ibge.gov.br/cidades-e-estados/ma/sao-jose-de-ribamar.html' },
   { name: 'IBGE — Biblioteca: histórico do município', url: 'https://biblioteca.ibge.gov.br/visualizacao/dtb/maranhao/saojosedoribamar.pdf' },
   { name: 'O Imparcial — Devoção e fé a São José de Ribamar', url: 'https://oimparcial.com.br/entretenimento-e-cultura/2021/09/devocao-e-fe-a-sao-jose-de-ribamar/' },
+  { name: 'Imirante — Festejo de São José de Ribamar 2026: programação', url: 'https://imirante.com/entretenimento/sao-jose-de-ribamar/2026/08/25/festejo-de-sao-jose-de-ribamar-veja-a-programacao-2026' },
   { name: 'O Imparcial — Festejo 2025', url: 'https://oimparcial.com.br/noticias/2025/08/festejo-de-sao-jose-de-ribamar-2025-celebra-o-padroeiro-do-maranhao-com-fe-tradicao-e-grandes-romarias/' },
   { name: 'O Imparcial — Boi de Ribamar celebra 50 anos', url: 'https://oimparcial.com.br/noticias/2026/03/cinco-decadas-de-matracas-boi-de-sao-jose-de-ribamar-celebra-50-anos/' },
   { name: 'O Imparcial — Lava-Bois', url: 'https://oimparcial.com.br/entretenimento-e-cultura/2019/07/lava-boi-encerra-festa-junina-em-ribamar/' },

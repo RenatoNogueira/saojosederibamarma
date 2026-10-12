@@ -3,7 +3,7 @@
     <header class="sec-head reveal">
       <p class="eyebrow"><span>06</span> Festejo do padroeiro</p>
       <h2>Setembro <em>é mês de romaria</em></h2>
-      <p class="lead">Patrimônio Cultural Imaterial do Maranhão desde 2024, o festejo ocupa o calendário do mês inteiro. Clique nos dias marcados ou nas abas para ver o percurso.</p>
+      <p class="lead">Patrimônio Cultural Imaterial do Maranhão desde 2024, o festejo de <%= festejo.year %> foi de <%= festejo.span[0] %>º a <%= festejo.span[1] %> de setembro. Clique nos dias marcados ou nas abas para ver o percurso.</p>
     </header>
 
     <div class="fest-grid">
@@ -22,7 +22,7 @@
             <% } %>
           <% } %>
         </div>
-        <p class="cal-note"><span class="sw in"></span> Festejo (1–28) &nbsp; <span class="sw ev"></span> Romarias. <%= festejo.note %></p>
+        <p class="cal-note"><span class="sw in"></span> Festejo (<%= festejo.span[0] %>–<%= festejo.span[1] %>) &nbsp; <span class="sw ev"></span> Romarias. <%= festejo.note %></p>
       </div>
 
       <div class="routes reveal">
