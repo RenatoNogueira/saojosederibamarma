@@ -150,21 +150,16 @@
 /* nuvens do dia */
 .puffs{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.4s ease}
 .hero[data-time="day"] .puffs{opacity:1}
-/* cumulus: lóbulos brancos sombreados + ruído fractal (feTurbulence/feDisplacementMap) = bordas orgânicas */
-.puff{position:absolute;left:-30%;display:block;width:var(--w);height:calc(var(--w)*.22);opacity:var(--o,.95);will-change:transform;
-  background:radial-gradient(ellipse at 50% 28%,#fff 0 45%,#e4edfa 75%,#c3d4ee 100%);border-radius:50%;
-  filter:url(#cloudBig);animation:drift var(--d) linear infinite;animation-delay:var(--dl)}
-.puff::before,.puff::after{content:"";position:absolute;border-radius:50%;
-  background:radial-gradient(circle at 50% 30%,#fff 0 50%,#e8f0fb 80%,#cfdcf1 100%)}
-.puff::before{width:44%;height:170%;left:12%;bottom:22%}
-.puff::after{width:36%;height:140%;left:46%;bottom:20%}
-.puff.p2,.puff.p3{filter:url(#cloudMid)}
-.puff.p5{filter:url(#cloudSmall)}
-.puff.p1{top:13%;--w:300px;--d:110s;--dl:-30s}
-.puff.p2{top:27%;--w:220px;--d:150s;--dl:-95s;--o:.9}
-.puff.p3{top:7%;--w:180px;--d:130s;--dl:-10s;--o:.8}
-.puff.p4{top:37%;--w:340px;--d:190s;--dl:-140s;--o:.7}
-.puff.p5{top:21%;--w:140px;--d:100s;--dl:-60s;--o:.85}
+/* nuvens: recortes de foto (PNG transparente do Wikimedia Commons, CC BY 3.0 — ver README e rodapé) */
+.puff{position:absolute;left:-30%;display:block;width:var(--w);aspect-ratio:var(--ar,3);opacity:var(--o,.95);will-change:transform;
+  background:var(--img) center/100% 100% no-repeat;filter:drop-shadow(0 12px 16px rgba(30,70,140,.14));
+  animation:drift var(--d) linear infinite;animation-delay:var(--dl)}
+.puff.flip{scale:-1 1}
+.puff.p1{top:13%;--w:340px;--ar:2.46;--img:url("../img/nuvem-2.webp");--d:110s;--dl:-30s}
+.puff.p2{top:27%;--w:230px;--ar:2.82;--img:url("../img/nuvem-3.webp");--d:150s;--dl:-95s;--o:.92}
+.puff.p3{top:7%;--w:170px;--ar:2.82;--img:url("../img/nuvem-3.webp");--d:130s;--dl:-10s;--o:.85}
+.puff.p4{top:37%;--w:380px;--ar:2.46;--img:url("../img/nuvem-2.webp");--d:190s;--dl:-140s;--o:.7}
+.puff.p5{top:21%;--w:260px;--ar:2.46;--img:url("../img/nuvem-2.webp");--d:100s;--dl:-60s;--o:.8}
 
 /* sol (dia) e lua (noite) trocam de lugar */
 .sun-wrap{transition:opacity 1.2s ease,transform 1.4s var(--ease)}
@@ -211,13 +206,11 @@ html[data-sky="day"] .site-nav:not(.solid)::before{content:"";position:absolute;
 @media (prefers-reduced-motion:reduce){.puff{animation:none}.sky-day,.sky-night,.puffs,.moon-wrap,.sun-wrap{transition:none}}
 
 @media (max-width:760px){
-  .puff{filter:url(#cloudMid)}
-  .puff.p2,.puff.p3,.puff.p5{filter:url(#cloudSmall)}
-  .puff.p1{top:19%;--w:150px}
-  .puff.p2{top:31%;--w:120px}
-  .puff.p3{top:12%;--w:96px}
-  .puff.p4{top:40%;--w:170px}
-  .puff.p5{top:25%;--w:84px}
+  .puff.p1{top:19%;--w:200px}
+  .puff.p2{top:31%;--w:140px}
+  .puff.p3{top:12%;--w:104px}
+  .puff.p4{top:40%;--w:190px}
+  .puff.p5{top:25%;--w:150px}
 }
 /* noite: texto com sombra escura para ler sobre o disco claro da lua */
 .hero[data-time="night"] .tagline{text-shadow:0 1px 3px rgba(4,11,38,.9),0 0 18px rgba(4,11,38,.75)}

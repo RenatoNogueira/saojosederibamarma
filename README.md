@@ -85,3 +85,10 @@ o conteúdo diz isso em vez de inventar.
 - Diálogos nativos (`<dialog>`) devolvem o foco ao elemento de origem.
 - Carrossel automático tem pausa e respeita `prefers-reduced-motion`.
 - Sem JavaScript o conteúdo continua visível (a revelação animada só vale com JS).
+
+## Créditos de imagens e mídia
+
+- **Nuvens do hero (dia):** recortes de *Clouds (transparent).png*, de Alex Maisuradze, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Clouds_(transparent).png). Crédito também no rodapé do site. Script: `scripts/cut-clouds.js`.
+- **Lua (hero, noite):** *Moon Phase and Libration, 2024*, NASA Scientific Visualization Studio (domínio público), via Wikimedia Commons. Script: `scripts/cut-moon.js`.
+- **Fotos da galeria:** créditos na legenda de cada foto (lightbox) e em `data/photos.js`.
+- **Vídeo "A cidade em 1989":** Sertões Gerais — Evandro Aquino, incorporado do YouTube sob demanda.
