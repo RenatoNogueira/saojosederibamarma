@@ -199,3 +199,20 @@
 .sec.lanterns :is(button,textarea,input,label,a,.lf-box,.lf-share){pointer-events:auto}
 .sec.lanterns .sky-meta{margin-bottom:12px}
 .sec.lanterns .sky-meta{align-self:start}
+
+/* as lanternas (e o balão com a mensagem) flutuam POR CIMA do conteúdo; o fundo do céu fica na própria seção */
+.sec.lanterns{background:
+    radial-gradient(1.5px 1.5px at 12% 8%,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 78% 6%,rgba(255,255,255,.6),transparent),
+    radial-gradient(ellipse at 50% 112%,rgba(255,140,70,.4),transparent 62%),
+    linear-gradient(180deg,#06143a 0%,#071a45 45%,#0a1f55 75%,#1b3f9c 100%)}
+.sec.lanterns .sky-box{background:none;z-index:3;pointer-events:none}
+.sec.lanterns .lantern,.sec.lanterns .l-card{pointer-events:auto}
+.sec.lanterns .l-card{z-index:6}
+/* a lua fica no fundo da seção (atrás do texto), não por cima dele */
+.sec.lanterns .sky-box::before{display:none}
+.sec.lanterns{background:
+    radial-gradient(circle at 88% 84px,#fff8de 0,#ffe9b0 20px,#e9c27a 30px,transparent 31px),
+    radial-gradient(circle at 88% 84px,rgba(255,235,180,.32) 0,transparent 130px),
+    radial-gradient(1.5px 1.5px at 12% 8%,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 78% 6%,rgba(255,255,255,.6),transparent),
+    radial-gradient(ellipse at 50% 112%,rgba(255,140,70,.4),transparent 62%),
+    linear-gradient(180deg,#06143a 0%,#071a45 45%,#0a1f55 75%,#1b3f9c 100%)}
