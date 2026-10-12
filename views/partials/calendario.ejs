@@ -1,5 +1,7 @@
 <section class="sec dark cal-sec" id="calendario">
   <div class="wrap">
+    <div class="cal-grid">
+    <div class="cal-side">
     <header class="sec-head reveal">
       <p class="eyebrow"><span>07</span> Calendário</p>
       <h2>O ano <em>em Ribamar</em></h2>
@@ -17,6 +19,9 @@
     </div>
     <p class="season reveal"><span class="dry-dot"></span> <%= seasons.dry.label %> · <%= seasons.tide %></p>
 
+    </div>
+
+    <div class="cal-main">
     <ol class="ev-list" id="evList">
       <% events.forEach(function(e, i){ %>
       <li class="ev reveal" data-month="<%= e.month %>" style="--ac:<%= e.ac %>;--d:<%= i %>">
@@ -34,5 +39,7 @@
       <% }) %>
     </ol>
     <p class="fine reveal">Datas de 2025 e 2026 conforme reportagens locais. Programações completas: Prefeitura de São José de Ribamar e Santuário.</p>
+    </div>
+    </div>
   </div>
 </section>
