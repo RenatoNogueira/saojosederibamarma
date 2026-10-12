@@ -292,4 +292,4 @@ html.menu-open body::after{content:"";position:fixed;inset:0;z-index:90;backgrou
   background:url("../img/lugares-fundo.webp") center bottom/cover no-repeat;filter:invert(1);mix-blend-mode:screen;opacity:.17;
   -webkit-mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%)}
 #lugares>.wrap{position:relative;z-index:1}
-@media (max-width:760px){#lugares::after{background-size:100% auto;opacity:.22;-webkit-mask:none;mask:none}}
+@media (max-width:760px){#lugares::after{background-position:34% bottom;opacity:.14;-webkit-mask:linear-gradient(180deg,transparent 0%,#000 45%);mask:linear-gradient(180deg,transparent 0%,#000 45%)}}
