@@ -449,7 +449,7 @@
     render();
   })();
 
-  /* ---------- lanternas ---------- */
+  /* ---------- lanternas (céu compartilhado) ---------- */
   (() => {
     const KINDS = {
       gratidao: { label: 'Gratidão', ph: 'Obrigado, São José, por…' },
@@ -457,28 +457,68 @@
       lembranca: { label: 'Lembrança', ph: 'Em memória de…' }
     };
     const form = $('#lanternForm'), msg = $('#lMsg'), from = $('#lFrom'), sky = $('#skyBox'), card = $('#lCard');
+    const shareRow = $('#lShareRow'), shareBox = $('#lShare'), lead = $('#lLead');
     const ring = $('#lRing'), RING = 62.8;
     let kind = 'gratidao';
-    /* só lanternas realmente enviadas: descarta exemplos que versões anteriores possam ter gravado */
-    let list = storedList('lanterns2').filter(l => l && typeof l.m === 'string' && l.t && !/^Exemplo:/.test(l.m)).map(l => ({ ...l, k: ['gratidao', 'pedido', 'lembranca'].includes(l.k) ? l.k : 'gratidao' }));
-    store.set('lanterns2', list);
+
+    /* sessão (a mesma usada pelo contador de visitantes) */
+    let sid = null;
+    try { sid = sessionStorage.getItem('ribamar:sid'); } catch { /* sem storage */ }
+    if (!sid || !/^[a-z0-9]{8,40}$/.test(sid)) {
+      const a = new Uint8Array(12); crypto.getRandomValues(a);
+      sid = [...a].map(b => (b % 36).toString(36)).join('');
+      try { sessionStorage.setItem('ribamar:sid', sid); } catch { /* sem storage */ }
+    }
+
+    /* minhas lanternas (neste navegador) e as de outras pessoas (vindas do servidor) */
+    let own = storedList('lanterns2')
+      .filter(l => l && typeof l.m === 'string' && l.t && !/^Exemplo:/.test(l.m))
+      .map(l => ({ ...l, k: KINDS[l.k] ? l.k : 'gratidao' }));
+    store.set('lanterns2', own);
+    let others = [];
+    const hidden = new Set(storedList('lanternsHidden').filter(x => typeof x === 'string'));
+    let apiOn = false;
+
+    /* posição, velocidade e balanço determinísticos a partir do id (a lanterna é a mesma para todos) */
+    function placement(id) {
+      let h = 2166136261;
+      for (const c of id) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; }
+      const r = n => ((h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0) % n) / n;
+      return { x: 6 + r(1000) * 84, dur: 18 + r(1000) * 10, delay: -(r(1000) * 18), sway: (r(1000) * 70 - 35) | 0, sc: +(.9 + r(1000) * .35).toFixed(2) };
+    }
+
+    const all = () => {
+      const mine = own.map(l => ({ ...l, mine: true }));
+      const ownIds = new Set(own.map(l => l.id).filter(Boolean));
+      const theirs = others
+        .filter(o => !ownIds.has(o.id) && !hidden.has(o.id))
+        .map(o => ({ id: o.id, m: o.m, k: o.k, from: o.f, t: o.t, mine: false, ...placement(o.id) }));
+      return [...theirs, ...mine];
+    };
+    let list = [];
 
     const lampHtml = (glow = 1) => `<span class="lamp-wrap" style="--glow:${glow}"><span class="halo"></span><span class="lamp"><i></i></span></span>`;
-    const when = t => t ? 'acesa em ' + new Date(t).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' }) : 'exemplo';
+    const when = l => {
+      if (!l.t) return '';
+      const days = Math.floor((Date.now() - l.t) / 86400000);
+      if (l.mine) return 'acesa em ' + new Date(l.t).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' });
+      return days < 1 ? 'acesa hoje' : days === 1 ? 'acesa ontem' : `acesa há ${days} dias`;
+    };
 
     function render(opts = {}) {
+      list = all();
       $$('.lantern, .sky-empty', sky).forEach(n => n.remove());
       list.forEach((l, i) => {
         const el = document.createElement('button');
-        el.type = 'button'; el.className = 'lantern ' + l.k; el.dataset.i = i;
+        el.type = 'button'; el.className = 'lantern ' + l.k + (l.mine ? ' mine' : ' other'); el.dataset.i = i;
         el.style.left = l.x + '%';
-        el.style.animationDuration = l.dur + 's'; el.style.animationDelay = l.delay + 's';
+        el.style.animationDuration = l.dur + 's'; el.style.animationDelay = (l.delay || 0) + 's';
         el.style.setProperty('--sway', l.sway + 'px');
         el.style.setProperty('--rise', Math.round(sky.clientHeight * .78) + 'px');
         el.style.setProperty('--sc', l.sc);
         el.innerHTML = lampHtml(1);
-        el.setAttribute('aria-label', `Lanterna de ${KINDS[l.k].label.toLowerCase()}: ${l.m}`);
-        if (opts.born === i) { el.classList.add('born'); el.style.animationDelay = '0s, 0s'; }
+        el.setAttribute('aria-label', `Lanterna de ${KINDS[l.k].label.toLowerCase()}${l.mine ? '' : ' de outra pessoa'}: ${l.m}`);
+        if (opts.bornId && l.id === opts.bornId || opts.born === 'last' && i === list.length - 1) { el.classList.add('born'); el.style.animationDelay = '0s, 0s'; }
         sky.appendChild(el);
       });
       if (!list.length) { const p = document.createElement('p'); p.className = 'sky-empty'; p.textContent = 'O céu está vazio. Solte a primeira lanterna.'; sky.appendChild(p); }
@@ -494,10 +534,13 @@
       $$('.lantern.sel', sky).forEach(x => x.classList.remove('sel')); el.classList.add('sel'); openI = +el.dataset.i;
       const c = { gratidao: '255,170,80', pedido: '226,80,63', lembranca: '110,165,255' }[l.k];
       card.style.setProperty('--kg', c);
-      $('#lKind').textContent = KINDS[l.k].label;
+      $('#lKind').textContent = KINDS[l.k].label + (l.mine ? ' · sua lanterna' : '');
       $('#lMsgOut').textContent = l.m;
       $('#lFromOut').textContent = l.from ? '— ' + l.from : '';
-      $('#lWhen').textContent = when(l.t);
+      $('#lWhen').textContent = when(l);
+      const rep = $('#lReport');
+      rep.hidden = l.mine || !l.id || !apiOn;
+      rep.dataset.id = l.id || '';
       const sr = sky.getBoundingClientRect(), r = el.getBoundingClientRect();
       const w = card.offsetWidth || 300, h = card.offsetHeight || 150;
       let x = r.left - sr.left + r.width / 2 - w / 2; x = Math.max(12, Math.min(sr.width - w - 12, x));
@@ -514,6 +557,35 @@
     $('#lCardX').addEventListener('click', closeCard);
     addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('on')) closeCard(); });
 
+    /* API */
+    async function api(method, body) {
+      const r = await fetch('/api/lanterns', {
+        method, headers: body ? { 'Content-Type': 'application/json' } : undefined, body: body ? JSON.stringify(body) : undefined
+      });
+      let data = null;
+      try { data = await r.json(); } catch { /* corpo vazio */ }
+      return { ok: r.ok, status: r.status, data };
+    }
+    async function loadShared() {
+      try {
+        const { ok, data } = await api('GET');
+        if (!ok || !data || !Array.isArray(data.lanterns)) throw new Error('indisponível');
+        others = data.lanterns.filter(o => o && typeof o.id === 'string' && typeof o.m === 'string' && KINDS[o.k]);
+        if (!apiOn) { apiOn = true; shareRow.hidden = false; lead.textContent = 'Escolha o que sua lanterna carrega, escreva uma frase e solte-a no céu da procissão. Se você deixar, outras pessoas também poderão ler a sua mensagem.'; }
+        render();
+      } catch {
+        if (!apiOn) { shareRow.hidden = true; }     /* sem servidor (ex.: desenvolvimento): segue só local */
+      }
+    }
+
+    $('#lReport').addEventListener('click', async e => {
+      const id = e.currentTarget.dataset.id; if (!id) return;
+      hidden.add(id); store.set('lanternsHidden', [...hidden]);
+      closeCard(); render();
+      toast('Obrigado. Ocultamos essa lanterna para você e vamos revisar.');
+      try { await api('POST', { sid, report: id }); } catch { /* o ocultamento local já vale */ }
+    });
+
     /* formulário */
     function setKind(k) {
       kind = k; form.dataset.k = k;
@@ -525,26 +597,49 @@
       const n = msg.value.length;
       $('#lCount').textContent = `${n} / 140`;
       ring.style.strokeDashoffset = RING * (1 - n / 140);
-      /* a lanterna da prévia brilha mais quanto mais você escreve */
       $('#lPreview .lamp-wrap').style.setProperty('--glow', (.7 + n / 140 * .9).toFixed(2));
     }
     msg.addEventListener('input', counter);
-    form.addEventListener('submit', e => {
+
+    let sending = false;
+    form.addEventListener('submit', async e => {
       e.preventDefault();
+      if (sending) return;
       const m = msg.value.trim(); if (!m) { toast('Escreva uma mensagem antes de soltar a lanterna'); msg.focus(); return; }
-      list.push({ m, k: kind, from: from.value.trim(), t: Date.now(), x: 6 + Math.random() * 84, dur: 18 + Math.random() * 10, delay: 0,
-        sway: (Math.random() * 70 - 35) | 0, sc: +(.9 + Math.random() * .35).toFixed(2) });
-      list = list.slice(-24); store.set('lanterns2', list);
+      const entry = { m, k: kind, from: from.value.trim(), t: Date.now(), x: 6 + Math.random() * 84, dur: 18 + Math.random() * 10, delay: 0,
+        sway: (Math.random() * 70 - 35) | 0, sc: +(.9 + Math.random() * .35).toFixed(2) };
+      let note = 'Sua lanterna subiu ✦';
+      const wantsShare = apiOn && !shareRow.hidden && shareBox.checked;
+      if (wantsShare) {
+        sending = true;
+        const btn = form.querySelector('.lf-submit'); btn.disabled = true;
+        try {
+          const { ok, status, data } = await api('POST', { sid, m, k: kind, f: entry.from });
+          if (ok && data && data.id) { entry.id = data.id; entry.t = data.t || entry.t; note = 'Sua lanterna subiu — e outras pessoas podem vê-la ✦'; }
+          else if (status === 422) { note = (data && data.message ? data.message + ' ' : '') + 'Ela ficou só no seu céu.'; }
+          else if (status === 429) { note = (data && data.message ? data.message + ' ' : '') + 'Ela ficou só no seu céu.'; }
+          else note = 'Não conseguimos publicar agora; sua lanterna ficou só no seu céu.';
+        } catch { note = 'Sem conexão: sua lanterna ficou só no seu céu.'; }
+        btn.disabled = false; sending = false;
+      }
+      own.push(entry);
+      own = own.slice(-24); store.set('lanterns2', own);
       msg.value = ''; counter(); closeCard();
-      render({ born: list.length - 1 });
+      render({ born: 'last' });
       sky.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      toast('Sua lanterna subiu ✦');
+      toast(note);
     });
+
     $('#skyClear').onclick = () => {
-      if (!list.length) return;
-      list = []; store.set('lanterns2', list); closeCard(); render(); toast('Céu limpo');
+      if (!own.length) return;
+      own = []; store.set('lanterns2', own); closeCard(); render();
+      toast('Suas lanternas foram removidas deste navegador. As publicadas ficam visíveis por até 7 dias.');
     };
 
     setKind('gratidao'); counter(); render();
+    shareRow.hidden = true;
+    loadShared();
+    /* atualiza o céu enquanto a página está aberta e visível */
+    setInterval(() => { if (!document.hidden) loadShared(); }, 90000);
   })();
 })();

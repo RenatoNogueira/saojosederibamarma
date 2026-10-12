@@ -3,7 +3,7 @@
     <header class="sec-head reveal">
       <p class="eyebrow"><span>12</span> Procissão luminosa</p>
       <h2>Acenda <em>uma luz</em></h2>
-      <p class="lead">Escolha o que sua lanterna carrega, escreva uma frase e solte-a no céu da procissão. Ela fica guardada neste navegador — e só você a vê.</p>
+      <p class="lead" id="lLead">Escolha o que sua lanterna carrega, escreva uma frase e solte-a no céu da procissão. Ela fica guardada neste navegador — e só você a vê.</p>
     </header>
 
     <form class="lantern-form reveal" id="lanternForm" data-k="gratidao">
@@ -21,6 +21,11 @@
             <textarea id="lMsg" maxlength="140" rows="3" placeholder="Obrigado, São José, por…"></textarea>
             <label for="lFrom" class="sr">Assinatura (opcional)</label>
             <input id="lFrom" class="lf-from" maxlength="30" placeholder="Assinatura (opcional)">
+          </div>
+
+          <div class="lf-share" id="lShareRow" hidden>
+            <label><input type="checkbox" id="lShare" checked><span>Deixar que outras pessoas leiam esta lanterna</span></label>
+            <p>Mensagens públicas passam por um filtro, ficam visíveis por até 7 dias e podem ser denunciadas. Não escreva dados pessoais.</p>
           </div>
 
           <div class="lf-row">
@@ -44,7 +49,7 @@
     <div class="sky-wrap reveal">
       <div class="sky-meta">
         <span><b id="skyCount">0</b> <span id="skyLbl">lanternas no céu</span><em id="skyHint" hidden> · toque em uma para ler</em></span>
-        <button type="button" id="skyClear">Limpar meu céu</button>
+        <button type="button" id="skyClear">Limpar minhas lanternas</button>
       </div>
       <div class="sky-box" id="skyBox" aria-label="Céu com as lanternas acesas">
         <div class="sea-l" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -53,6 +58,7 @@
           <span class="l-kind" id="lKind"></span>
           <p class="l-msg" id="lMsgOut"></p>
           <div class="l-foot"><b id="lFromOut"></b><span id="lWhen"></span></div>
+          <button type="button" class="l-report" id="lReport" hidden>Denunciar esta mensagem</button>
         </div>
       </div>
     </div>

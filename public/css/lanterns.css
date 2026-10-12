@@ -129,3 +129,14 @@
   .lf-row{flex-direction:column-reverse;align-items:stretch}
   .lf-submit{width:100%}
 }
+
+/* céu compartilhado */
+.lf-share{margin-top:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.2)}
+.lf-share[hidden]{display:none}
+.lf-share label{display:flex;align-items:center;gap:10px;font-size:14px;color:#e6eeff;cursor:pointer}
+.lf-share input{width:18px;height:18px;accent-color:rgb(var(--kg));flex:none}
+.lf-share p{margin:6px 0 0 28px;font-size:12px;line-height:1.45;color:#a9bdf0}
+.l-report{margin-top:10px;background:none;border:0;padding:6px 0;color:#a9bdf0;font:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.l-report:hover{color:#fff}
+.l-report[hidden]{display:none}
+.lantern.other{opacity:.92}
