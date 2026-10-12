@@ -24,17 +24,20 @@
   /* ---------- nav ---------- */
   const nav = $('#siteNav'), progress = $('#progress'), links = $('#navLinks'), burger = $('#burger');
   function onScroll() {
+    if (window.scrollLock && window.scrollLock.locked) return;   /* página travada: não recalcula */
     nav.classList.toggle('solid', scrollY > 40);
     const max = document.documentElement.scrollHeight - innerHeight;
     progress.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
   }
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
   /* menu móvel: abre/fecha, trava a rolagem da página e fecha com Esc, clique fora ou ao ampliar a tela */
+  let menuLocked = false;
   function setMenu(open, returnFocus) {
     links.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open);
     burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     document.documentElement.classList.toggle('menu-open', open);
+    if (open !== menuLocked) { menuLocked = open; open ? window.scrollLock?.lock() : window.scrollLock?.unlock(); }
     if (!open && returnFocus) burger.focus();
   }
   burger.addEventListener('click', () => setMenu(!links.classList.contains('open')));
@@ -235,7 +238,7 @@
     $('#mPrev').hidden = $('#mNext').hidden = !multi;
     if (multi) { $('#mPrevLbl').textContent = lbl(list[(i - 1 + n) % n]); $('#mNextLbl').textContent = lbl(list[(i + 1) % n]); }
 
-    if (!modal.open) { lastFocus = document.activeElement; modal.showModal(); document.body.style.overflow = 'hidden'; }
+    if (!modal.open) { lastFocus = document.activeElement; modal.showModal(); }
     const sc = $('#mScroll'); sc.scrollTop = 0;
     sc.classList.remove('in-r', 'in-l');
     if (dir) { void sc.offsetWidth; sc.classList.add(dir > 0 ? 'in-r' : 'in-l'); }
@@ -255,7 +258,8 @@
     const k = +b.dataset.k; if (k !== cur.i) openItem(cur.kind, LISTS[cur.kind][k].id, k > cur.i ? 1 : -1);
   });
   modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
-  modal.addEventListener('close', () => { document.body.style.overflow = ''; cur = null; if (lastFocus) lastFocus.focus?.(); });
+  window.scrollLock?.bindDialog(modal);
+  modal.addEventListener('close', () => { cur = null; if (lastFocus) lastFocus.focus?.(); });
   modal.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') step(1);
     if (e.key === 'ArrowLeft') step(-1);

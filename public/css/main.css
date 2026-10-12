@@ -279,5 +279,5 @@ a{color:inherit}
 @media (max-width:400px){.logo{font-size:16px;gap:8px}}
 
 /* menu aberto: trava a rolagem da página e escurece o fundo */
-html.menu-open,html.menu-open body{overflow:hidden}
+html.scroll-locked{overflow:hidden;overscroll-behavior:none}
 html.menu-open body::after{content:"";position:fixed;inset:0;z-index:90;background:rgba(2,7,28,.6);animation:m-fade .3s}

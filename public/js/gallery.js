@@ -156,7 +156,7 @@
     if (!list.includes(p)) list = photos.slice();
     lastFocus = document.activeElement;
     buildThumbs();
-    if (!lb.open) { lb.showModal(); document.body.style.overflow = 'hidden'; }
+    if (!lb.open) { lb.showModal(); }
     show(list.indexOf(p), true);
   }
 
@@ -172,7 +172,8 @@
     const id = mapBtn.dataset.id; lb.close();
     if (window.ribamarGoto) window.ribamarGoto(id); else location.hash = '#mapa';
   };
-  lb.addEventListener('close', () => { document.body.style.overflow = ''; setZoom(false); if (lastFocus && lastFocus.focus) lastFocus.focus(); });
+  window.scrollLock?.bindDialog(lb);
+  lb.addEventListener('close', () => { setZoom(false); if (lastFocus && lastFocus.focus) lastFocus.focus(); });
   lb.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') show(idx + 1);
     if (e.key === 'ArrowLeft') show(idx - 1);
