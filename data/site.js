@@ -3,10 +3,12 @@
 
 const accents = { fe: '#ffc861', praia: '#5fd0ff', cultura: '#ff8a6b', territorio: '#7fb1ff', lenda: '#ff8a6b' };
 
-/* ---------- números ---------- */
+/* ---------- números ----------
+   Fonte: API de dados do IBGE (servicodados.ibge.gov.br), consultada em out/2026:
+   Censo 2022 = 244.579 (agregado 4709); estimativa 2026 = 260.695 (agregado 6579, variável 9324). */
 const numbers = [
   { value: 244579, fmt: 'int', label: 'habitantes', note: 'Censo 2022 · IBGE', icon: 'people' },
-  { value: 259164, fmt: 'int', label: 'população estimada', note: 'Estimativa 2025 · IBGE', icon: 'trend' },
+  { value: 260695, fmt: 'int', label: 'população estimada', note: 'Estimativa 2026 · IBGE', short: 'estimativa IBGE 2026', icon: 'trend' },
   { value: 180, fmt: 'int', suffix: ' km²', label: 'de área territorial', note: '180,3 km² · IBGE 2025', icon: 'map' },
   { value: 1356, fmt: 'int', label: 'hab. por km²', note: 'Densidade em 2022 · IBGE', icon: 'dens' },
   { value: 50, fmt: 'int', prefix: '+', suffix: '%', label: 'de crescimento populacional', note: 'Entre os censos, +81,5 mil pessoas', icon: 'up' },
