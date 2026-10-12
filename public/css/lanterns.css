@@ -140,3 +140,15 @@
 .l-report:hover{color:#fff}
 .l-report[hidden]{display:none}
 .lantern.other{opacity:.92}
+
+/* lado a lado no computador (no celular e em telas estreitas continua em coluna) */
+@media (min-width:1000px){
+  #luzes .wrap.narrow{max-width:1200px}
+  .lant-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px;align-items:stretch}
+  .lant-grid .lantern-form{display:flex;flex-direction:column;justify-content:center}
+  .lant-grid .lf-main{grid-template-columns:minmax(0,1fr)}
+  .lant-grid .lf-preview{order:-1;min-height:120px;flex-direction:row;justify-content:center;gap:14px;padding:6px 10px}
+  .lant-grid .lf-preview .lantern-shell{--sc:1.1;width:60px;height:84px}
+  .lant-grid .sky-wrap{margin-top:0;display:flex;flex-direction:column}
+  .lant-grid .sky-box{flex:1;height:auto;min-height:560px}
+}
