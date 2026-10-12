@@ -174,3 +174,15 @@
 .lantern-form{border-color:rgba(255,214,140,.12);background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
   box-shadow:0 0 70px rgba(var(--kg),.06) inset}
 .lantern-form:focus-within{border-color:rgba(var(--kg),.45);box-shadow:0 0 80px rgba(var(--kg),.14) inset}
+
+/* formulário "solto" no céu: sem cartão, sem caixas; só texto, linhas finas e o brilho da lanterna */
+.lantern-form{background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;border-radius:0;padding-left:0;padding-right:0}
+.lantern-form:focus-within{border:0;box-shadow:none}
+.kind{background:none;border:0;border-bottom:2px solid rgba(255,255,255,.14);border-radius:0;padding:8px 6px 10px}
+.kind:hover{transform:none;border-bottom-color:rgba(var(--kg),.7)}
+.kind[aria-checked="true"]{background:none;border-bottom-color:rgb(var(--kg))}
+.lf-box{background:none;border:0;border-bottom:1px solid rgba(255,255,255,.2);border-radius:0;padding:10px 2px 8px}
+.lf-box:focus-within{border-bottom-color:rgba(var(--kg),.9)}
+.lf-from{border-top:0}
+.lf-preview{background:radial-gradient(ellipse at 50% 70%,rgba(var(--kg),.18),transparent 68%);border-radius:0}
+.lf-preview{-webkit-mask:radial-gradient(ellipse at 50% 60%,#000 35%,transparent 72%);mask:radial-gradient(ellipse at 50% 60%,#000 35%,transparent 72%)}
