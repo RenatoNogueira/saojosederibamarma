@@ -293,3 +293,12 @@ html.menu-open body::after{content:"";position:fixed;inset:0;z-index:90;backgrou
   -webkit-mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%)}
 #lugares>.wrap{position:relative;z-index:1}
 @media (max-width:760px){#lugares::after{background-position:34% bottom;opacity:.14;-webkit-mask:linear-gradient(180deg,transparent 0%,#000 45%);mask:linear-gradient(180deg,transparent 0%,#000 45%)}}
+
+/* quiz: título à esquerda e perguntas à direita no computador (economiza altura) */
+.quiz-grid{max-width:1040px;margin:0 auto}
+@media (min-width:960px){
+  .quiz-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,64px);align-items:start;max-width:none}
+  .quiz-grid .sec-head{margin-bottom:0;position:sticky;top:110px}
+  .quiz-grid .sec-head h2{font-size:clamp(34px,3.8vw,52px)}
+}
+.btn[hidden]{display:none}
