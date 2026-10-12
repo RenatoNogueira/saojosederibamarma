@@ -28,6 +28,3 @@
   .ck-btn{flex:1;padding:8px 10px}
 }
 @media (prefers-reduced-motion:reduce){.ck{animation:none}}
-.foot-cred{margin:0;font-size:11px;letter-spacing:.04em;color:#8fa5dc;opacity:.8}
-.foot-cred a{color:inherit;text-underline-offset:3px}
-.foot-cred a:hover{color:var(--gold)}
