@@ -153,6 +153,11 @@ a{color:inherit}
   background:repeating-conic-gradient(rgba(255,214,140,.14) 0 4deg,transparent 4deg 12deg);
   -webkit-mask:radial-gradient(circle,#000 20%,transparent 70%);mask:radial-gradient(circle,#000 20%,transparent 70%);animation:spin 80s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* romaria: a ilustração é invertida (silhuetas claras) e mesclada com "screen" sobre o degradê, em baixa opacidade */
+.sec.festejo::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("../img/romaria.webp") center bottom/cover no-repeat;filter:invert(1);mix-blend-mode:screen;opacity:.16;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%)}
+.sec.festejo>.wrap{position:relative;z-index:1}
 .fest-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:26px;align-items:start}
 .cal,.routes{border-radius:26px;background:rgba(6,20,58,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,214,140,.25);padding:24px}
 .cal-head{display:flex;flex-direction:column;gap:2px;margin-bottom:16px}
@@ -281,3 +286,4 @@ a{color:inherit}
 /* menu aberto: trava a rolagem da página e escurece o fundo */
 html.scroll-locked{overflow:hidden;overscroll-behavior:none}
 html.menu-open body::after{content:"";position:fixed;inset:0;z-index:90;background:rgba(2,7,28,.6);animation:m-fade .3s}
+@media (max-width:760px){.sec.festejo::after{background-size:100% auto;opacity:.22;-webkit-mask:none;mask:none}}
