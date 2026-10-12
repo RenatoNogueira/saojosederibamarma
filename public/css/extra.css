@@ -133,3 +133,5 @@
 .dark .eat-arrow{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#fff}
 .dark .eat-arrow:hover:not(:disabled){background:var(--gold);color:#06143a;border-color:var(--gold)}
 .dark .eat-arrow:focus-visible{outline-color:var(--gold)}
+/* contém os .sr (position:absolute) dos cartões; sem isso eles escapam do overflow e alargam a página ao rolar */
+.eat-grid,.dish-grid,.stay-grid,.grid.places,.cult-grid{position:relative}
