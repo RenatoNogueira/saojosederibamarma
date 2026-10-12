@@ -79,7 +79,8 @@
 
     sx.clearRect(0, 0, W, H);
     starA += ((hero.dataset.time === 'night' ? 1 : 0) - starA) * .04;
-    const fade = starA;
+    const dawn = 1 - Math.min(1, Math.max(0, secs - 2) / 14);         /* como antes: esmaecem com o amanhecer… */
+    const fade = starA * (.45 + .55 * dawn);                          /* …mas ficam, para a lua ter estrelas */
     sx.fillStyle = '#fff';
     for (const s of stars) {
       sx.globalAlpha = (.35 + .65 * Math.abs(Math.sin(secs * s.s + s.p))) * fade;
