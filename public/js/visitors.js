@@ -54,6 +54,9 @@
   function start() { if (timer || failures >= 3) return; ping(); timer = setInterval(ping, 30000); }
   function stop() { clearInterval(timer); timer = null; }
 
-  document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
-  if (!document.hidden) start();
+  document.addEventListener('visibilitychange', () => { document.hidden || window.ribamarConsent !== 'all' ? stop() : start(); });
+  /* só roda com a permissão do visitante (aviso de privacidade) */
+  const go = () => { if (window.ribamarConsent === 'all' && !document.hidden) start(); };
+  document.addEventListener('ribamar:consent', e => { if (e.detail === 'all') go(); else { stop(); el.hidden = true; } });
+  go();
 })();

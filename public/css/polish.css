@@ -109,7 +109,7 @@
 .gal-sec .sec-head{margin-bottom:clamp(20px,3vw,32px)}
 
 /* contador de visitantes: discreto */
-.foot-base{display:flex;justify-content:flex-end;margin-top:26px}
+.foot-base{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:26px}
 .visitors{display:inline-flex;align-items:center;gap:7px;margin:0;font-size:11px;letter-spacing:.04em;color:#8fa5dc;opacity:.6;font-variant-numeric:tabular-nums}
 .visitors::before{content:"";width:5px;height:5px;border-radius:50%;background:#58c98b;opacity:.8}
 .visitors[hidden]{display:none}

@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" href="css/share.css">
+  <link rel="stylesheet" href="css/cookies.css">
   <link rel="stylesheet" href="css/a11y.css">
 </head>
 <body id="top">
@@ -68,6 +69,7 @@
   <%- include('partials/modal') %>
   <%- include('partials/lightbox') %>
   <%- include('partials/share') %>
+  <%- include('partials/cookies') %>
 
   <script type="application/json" id="site-data"><%- JSON.stringify(clientData).replace(/</g, '\\u003c') %></script>
   <script src="js/scrolllock.js"></script>
@@ -76,6 +78,7 @@
   <script src="js/gallery.js"></script>
   <script src="js/extra.js"></script>
   <script src="js/share.js" defer></script>
+  <script src="js/cookies.js" defer></script>
   <script src="js/visitors.js" defer></script>
 </body>
 </html>
