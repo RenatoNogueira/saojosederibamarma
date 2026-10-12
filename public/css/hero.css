@@ -88,15 +88,6 @@
 #lights{position:absolute;inset:0;width:100%;height:100%;z-index:6;pointer-events:none;opacity:0}
 .hero.ready #lights{animation:fade 3s 3s forwards}
 
-/* ---------- destaques ---------- */
-.hero-chips{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);z-index:8;display:flex;gap:10px;list-style:none;white-space:nowrap}
-.hero-chips li{padding:9px 16px;border-radius:99px;font-size:13px;color:#dbe6ff;background:rgba(6,20,58,.6);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,214,140,.3);opacity:0}
-.hero-chips b{color:var(--gold);font-weight:600}
-.hero.ready .hero-chips li{animation:up .8s var(--ease) forwards}
-.hero.ready .hero-chips li:nth-child(1){animation-delay:3.3s}
-.hero.ready .hero-chips li:nth-child(2){animation-delay:3.45s}
-.hero.ready .hero-chips li:nth-child(3){animation-delay:3.6s}
 
 .scroll-cue{position:absolute;left:50%;bottom:calc(4vh + 66px);transform:translateX(-50%);z-index:8;width:44px;height:44px;border-radius:50%;
   display:grid;place-items:center;color:#fff;text-decoration:none;opacity:0;background:rgba(6,20,58,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
@@ -120,11 +111,8 @@
   .church-wrap{width:62vw;left:-6vw;bottom:17vh}
   .sun-wrap{right:6vw;bottom:34vh;width:44vw}
   .sea{height:30vh}
-  .hero-chips{flex-direction:column;align-items:center;gap:6px;bottom:2.5vh}
-  .hero-chips li{font-size:12px;padding:7px 14px}
   .scroll-cue{display:none}
 }
-@media (max-width:420px){.hero-chips li:nth-child(3){display:none}}
 @media (prefers-reduced-motion:reduce){
   .hero *,.hero-ready .site-nav{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important}
 }
