@@ -232,6 +232,8 @@ const routes = [
   { id: 'santuario', name: 'Santuário de São José de Ribamar', icon: 'church', q: 'Santuário de São José de Ribamar, Praça São José, São José de Ribamar, MA',
     line: 'Fica no Centro, na Praça São José.', dist: '≈ 32 km de São Luís',
     address: 'Praça São José, 239, Centro, São José de Ribamar – MA, 65110-000', plus: '689QCWQV+4R' },
+  { id: 'casa-milagres', name: 'Casa dos Milagres', icon: 'church', q: 'Casa dos Milagres, São José de Ribamar, MA',
+    line: 'No complexo do Santuário, perto da orla.', dist: 'Centro, junto ao Santuário' },
   { id: 'monumento', name: 'Monumento a São José', icon: 'statue', q: 'Monumento a São José de Ribamar, São José de Ribamar, MA',
     line: 'Escultura de 33 m, um dos cartões-postais da cidade.', dist: 'No município de Ribamar' },
   { id: 'cais', name: 'Praça do Cais de Ribamar', icon: 'boat', q: 'Praça do Cais, São José de Ribamar, MA',
