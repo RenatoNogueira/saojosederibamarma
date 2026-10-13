@@ -97,4 +97,4 @@ o conteúdo diz isso em vez de inventar.
 ## Compactação no build
 
 `npm run build` gera `dist/` com HTML, CSS e JS compactados (esbuild + limpeza de espaços e comentários do HTML). O código-fonte em `public/`, `views/` e o servidor de desenvolvimento (`npm run dev`) continuam legíveis. Se o `esbuild` não estiver instalado, o build segue sem compactar. Lógica em `lib/minify.js`.
-- **Fundo da seção Cultura:** colagem de três imagens (tocador de tambor, boi bordado e ilustração das matracas), montada por `scripts/make-cultura-collage.js` a partir das imagens fornecidas pelo autor do site.
+- **Fundo da seção Cultura:** silhuetas vetoriais (tocador de tambor, boi bordado, mãos com matracas e o mar), desenhadas por `scripts/make-cultura-silhouettes.js` a partir da composição das fotos de referência.
