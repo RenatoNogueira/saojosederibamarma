@@ -200,3 +200,10 @@
   -webkit-mask:linear-gradient(180deg,transparent 0%,#000 26%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 26%,#000 100%)}
 #historia>.wrap{position:relative;z-index:1}
 @media (max-width:760px){#historia::after{background-position:68% 100%;opacity:.22}}
+
+/* Cultura: ilustração original (matracas, tambor, boi, penas e mar) como fundo, bem suave sobre o papel */
+#cultura::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("../img/cultura-fundo.svg") center 90%/cover no-repeat;opacity:.2;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 30%,#000 100%)}
+#cultura>.wrap{position:relative;z-index:1}
+@media (max-width:760px){#cultura::after{background-size:auto 100%;background-position:62% bottom;opacity:.2}}
