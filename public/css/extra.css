@@ -193,3 +193,10 @@
   -webkit-mask:linear-gradient(180deg,transparent 0%,#000 12%,#000 88%,transparent 100%);mask:linear-gradient(180deg,transparent 0%,#000 12%,#000 88%,transparent 100%)}
 #calendario>.wrap,#galeria>.wrap,#roteiro>.wrap{position:relative;z-index:1}
 @media (max-width:760px){#calendario::after,#galeria::after,#roteiro::after{background-size:900px 600px;opacity:.45}}
+
+/* História: desenho a lápis (nau, rochedo com a cruz e a lua) como fundo, em baixa opacidade sobre o papel */
+#historia::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:url("../img/historia-fundo.webp") 60% 100%/cover no-repeat;mix-blend-mode:multiply;opacity:.25;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 26%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 26%,#000 100%)}
+#historia>.wrap{position:relative;z-index:1}
+@media (max-width:760px){#historia::after{background-position:68% 100%;opacity:.22}}
