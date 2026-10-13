@@ -115,7 +115,7 @@
 
   /* ---------- linha do tempo ---------- */
   (() => {
-    const rail = $('#tlRail'), bar = $('#tlBar'), prev = $('#tlPrev'), next = $('#tlNext'), pos = $('#tlPos');
+    const rail = $('#tlRail'), prev = $('#tlPrev'), next = $('#tlNext'), pos = $('#tlPos');
     const pad = n => String(n).padStart(2, '0');
     chipGroup('history', f => {
       $$('.tl-card').forEach(c => c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f));
@@ -126,7 +126,6 @@
     prev.onclick = () => rail.scrollBy({ left: -step(), behavior: 'smooth' });
     function upd() {
       const max = rail.scrollWidth - rail.clientWidth;
-      bar.style.width = (max > 0 ? Math.max(8, rail.scrollLeft / max * 100) : 100) + '%';
       prev.disabled = rail.scrollLeft < 4;
       next.disabled = max - rail.scrollLeft < 4;
       const cs = $$('.tl-card:not(.hide)'); let idx = 0, best = Infinity;

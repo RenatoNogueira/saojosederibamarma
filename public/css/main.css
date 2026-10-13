@@ -116,8 +116,6 @@ a{color:inherit}
 .tl-more{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--coral);margin-top:8px}
 .tl-more .ic{transition:transform .3s}
 .tl-card:hover .tl-more .ic{transform:translateX(5px)}
-.tl-bar{height:4px;border-radius:4px;background:var(--line);margin-top:6px;overflow:hidden}
-.tl-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--blue));border-radius:4px;transition:width .15s}
 
 /* ===== Lugares ===== */
 .grid.places{display:grid;grid-auto-flow:column;grid-auto-columns:min(300px,80vw);gap:20px}
