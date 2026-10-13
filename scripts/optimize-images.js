@@ -17,7 +17,7 @@ const JOBS = [
 ];
 const EXT = /\.(jpe?g|png)$/i;
 /* largura própria para arquivos específicos (a lua é exibida pequena) */
-const OVERRIDES = { 'lua.png': 720, 'nuvem-2.png': 520, 'nuvem-3.png': 300 };
+const OVERRIDES = { 'lua.png': 720, 'nuvem-2.png': 520, 'cultura-fundo.png': 1800, 'nuvem-3.png': 300 };
 
 (async () => {
   let converted = 0, skipped = 0, before = 0, after = 0;
