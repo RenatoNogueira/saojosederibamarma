@@ -201,10 +201,3 @@
 #historia>.wrap{position:relative;z-index:1}
 @media (max-width:760px){#historia::after{background-position:68% 100%;opacity:.22}}
 
-/* Cultura: silhuetas (tocador de tambor, boi bordado, matracas e o mar), bem suaves sobre o papel */
-#cultura::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:url("../img/cultura-fundo.svg") center bottom/100% auto no-repeat;opacity:.18;
-  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 22%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 22%,#000 100%)}
-#cultura>.wrap{position:relative;z-index:1}
-@media (max-width:1100px){#cultura::after{background-size:auto 62%;background-position:56% bottom}}
-@media (max-width:760px){#cultura::after{background-size:auto 48%;background-position:58% 92%;opacity:.26}}
