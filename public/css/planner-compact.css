@@ -1,0 +1,46 @@
+/* ===== Roteiro compacto (computador): interesses em uma faixa e o dia em três colunas lado a lado ===== */
+@media (min-width:761px){
+  .planner{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+  .planner .pl-panel{padding:16px 20px;border-radius:22px}
+
+  /* faixa de interesses */
+  .pl-controls{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"head actions" "chips chips" "meter meter";gap:10px 16px;align-items:center}
+  .pl-controls .pl-head{grid-area:head;margin:0}
+  .pl-controls .pl-head h3{font-size:19px}
+  .pl-step{width:28px;height:28px;font-size:13px}
+  .pl-controls .pl-chips{grid-area:chips;gap:6px}
+  .ichip{font-size:13px;padding:7px 12px 7px 9px;gap:6px}
+  .ichip .ic{width:16px;height:16px}
+  .pl-meter{grid-area:meter;margin:0;font-size:12.5px}
+  .pl-controls .pl-actions{grid-area:actions;margin:0;flex-wrap:nowrap}
+  .pl-controls .pl-actions .btn{padding:9px 16px;font-size:14px}
+  .pl-controls .hint{display:none}
+
+  /* o dia: Manhã | Tarde | Noite */
+  .pl-out{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"head foot" "slots slots";gap:10px 16px;align-items:center}
+  .pl-out .pl-head{grid-area:head;margin:0}
+  .pl-out .pl-head h3{font-size:19px}
+  .pl-out .pl-foot{grid-area:foot;margin:0;flex-wrap:nowrap}
+  .pl-out .pl-foot .btn{padding:8px 14px;font-size:13.5px}
+  .pl-out .pl-day{display:none}
+  .pl-out .pl-slots{grid-area:slots;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+  .pl-slot{padding:10px 10px 8px;border-radius:16px}
+  .pl-slot header{gap:8px;margin-bottom:8px}
+  .pl-sicon{width:32px;height:32px;border-radius:10px}
+  .pl-sicon .ic{width:18px;height:18px}
+  .pl-slot header h4{font-size:17px}
+  .pl-slot header small{font-size:11.5px}
+  .pl-n{width:24px;height:24px;font-size:12px}
+  .pl-items{gap:6px}
+  .pl-stop{padding:6px 8px;gap:8px;border-radius:12px}
+  .pl-stop:hover{transform:none}
+  .pl-ic{width:30px;height:30px;border-radius:10px}
+  .pl-ic .ic{width:16px;height:16px}
+  .pl-name b{font-size:13.5px}
+  .pl-name small{display:none}
+  .pl-x{width:26px;height:26px}
+  .pl-empty{padding:9px 10px;font-size:13px}
+}
+@media (min-width:761px) and (max-width:980px){
+  .pl-out .pl-slots{grid-template-columns:1fr}
+}
