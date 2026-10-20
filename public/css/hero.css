@@ -138,16 +138,16 @@
 /* nuvens do dia */
 .puffs{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity 1.4s ease}
 .hero[data-time="day"] .puffs{opacity:1}
-/* nuvens: recortes de foto (PNG transparente do Wikimedia Commons, CC BY 3.0 — ver README e rodapé) */
+/* nuvens: PNGs transparentes (assets-src/img/nuvem-2 e nuvem-3) */
 .puff{position:absolute;left:-30%;display:block;width:var(--w);aspect-ratio:var(--ar,3);opacity:var(--o,.95);will-change:transform;
   background:var(--img) center/100% 100% no-repeat;filter:drop-shadow(0 12px 16px rgba(30,70,140,.14));
   animation:drift var(--d) linear infinite;animation-delay:var(--dl)}
 .puff.flip{scale:-1 1}
-.puff.p1{top:13%;--w:340px;--ar:2.46;--img:url("../img/nuvem-2.webp");--d:110s;--dl:-30s}
-.puff.p2{top:27%;--w:230px;--ar:2.82;--img:url("../img/nuvem-3.webp");--d:150s;--dl:-95s;--o:.92}
-.puff.p3{top:7%;--w:170px;--ar:2.82;--img:url("../img/nuvem-3.webp");--d:130s;--dl:-10s;--o:.85}
-.puff.p4{top:37%;--w:380px;--ar:2.46;--img:url("../img/nuvem-2.webp");--d:190s;--dl:-140s;--o:.7}
-.puff.p5{top:21%;--w:260px;--ar:2.46;--img:url("../img/nuvem-2.webp");--d:100s;--dl:-60s;--o:.8}
+.puff.p1{top:13%;--w:340px;--ar:2;--img:url("../img/nuvem-2.webp");--d:110s;--dl:-30s}
+.puff.p2{top:27%;--w:230px;--ar:1.85;--img:url("../img/nuvem-3.webp");--d:150s;--dl:-95s;--o:.92}
+.puff.p3{top:7%;--w:170px;--ar:1.85;--img:url("../img/nuvem-3.webp");--d:130s;--dl:-10s;--o:.85}
+.puff.p4{top:37%;--w:380px;--ar:2;--img:url("../img/nuvem-2.webp");--d:190s;--dl:-140s;--o:.7}
+.puff.p5{top:21%;--w:260px;--ar:2;--img:url("../img/nuvem-2.webp");--d:100s;--dl:-60s;--o:.8}
 
 /* sol (dia) e lua (noite) trocam de lugar */
 .sun-wrap{transition:opacity 1.2s ease,transform 1.4s var(--ease)}

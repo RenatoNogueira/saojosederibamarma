@@ -88,7 +88,7 @@ o conteúdo diz isso em vez de inventar.
 
 ## Créditos de imagens e mídia
 
-- **Nuvens do hero (dia):** recortes de *Clouds (transparent).png*, de Alex Maisuradze, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Clouds_(transparent).png). Crédito também no rodapé do site. Script: `scripts/cut-clouds.js`.
+- **Nuvens do hero (dia):** PNGs transparentes fornecidos pelo autor do site (`assets-src/img/nuvem-2.png` e `nuvem-3.png`, convertidos em WebP por `npm run images`). A origem e a licença dessas imagens não foram verificadas aqui.
 - **Lua (hero, noite):** *Moon Phase and Libration, 2024*, NASA Scientific Visualization Studio (domínio público), via Wikimedia Commons. Script: `scripts/cut-moon.js`.
 - **Fotos da galeria:** créditos na legenda de cada foto (lightbox) e em `data/photos.js`.
 - **Vídeo "A cidade em 1989":** Sertões Gerais — Evandro Aquino, incorporado do YouTube sob demanda.
